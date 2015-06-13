@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+        
+<hibernate-configuration>
+  <session-factory>
+    <!-- SQL dialect -->
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        
+    <!--  <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>  
+          <property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect</property>
+          <property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver"/> -->
+
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost/abookd</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">dippy</property>
+    <property name="hibernate.max_fetch_depth">3</property>
+
+    <!--mysql settings 
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost/abookd</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">dippy</property>
+        <property name="connection.shutdown">true</property>
+    -->
+        
+    <!-- JDBC connection pool (use the built-in one) -->
+    <property name="connection.pool_size">1</property>
+        
+    <!-- Enable Hibernate's automatic session context management -->
+    <property name="current_session_context_class">thread</property>
+        
+    <!-- Disable the second-level cache  -->
+    <property
+     name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+        
+    <!-- disable batching so HSQLDB will propagate errors correctly. -->
+    <!--
+	    <property name="jdbc.batch_size">0</property>
+    -->
+
+    <!-- Echo all executed SQL to stdout -->
+    <property name="show_sql">true</property>
+    
+    <!-- disable batching so HSQLDB will propagate errors correctly. -->
+    <property name="jdbc.batch_size">0</property>
+    
+    <!-- List all the mapping documents we're using -->
+    <mapping class="us.abook.business.Recording"/>
+    <mapping class="us.abook.business.Narrator"/>
+    <mapping class="us.abook.business.Review"/>
+  </session-factory>
+</hibernate-configuration>

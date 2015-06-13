@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<project name="I hate java"
+         default="db" basedir="."
+         xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+
+  <!-- Set up properties containing important project directories -->
+  <property name="source.root" value="WEB-INF/src"/>
+  <property name="class.root" value="WEB-INF/classes/"/>
+  <property name="class.us.root" value="WEB-INF/classes/us"/>
+  <property name="servlet.jar" value="/usr/share/java/servlet-2.3.jar"/>
+
+  <artifact:dependencies pathId="dependency.class.path"
+        filesetid="dependency.fileset">
+    <dependency groupId="org.hibernate" artifactId="hibernate"
+                version="3.2.5.ga">
+      <exclusion groupId="javax.transaction" artifactId="jta"/>
+    </dependency>
+
+    <!--
+    <dependency groupId="mysql" 
+                artifactId="mysql-connector-java"
+                version="5.0.5"/>
+                -->
+
+    <dependency groupId="postgresql"
+        artifactId="postgresql"
+        version="8.3-603.jdbc4"/>
+
+    <dependency groupId="org.hibernate" artifactId="hibernate-tools"
+                version="3.2.0.beta9a"/>
+    <dependency groupId="org.hibernate" artifactId="hibernate-annotations"
+                version="3.3.0.ga"/>
+    <dependency groupId="org.hibernate"
+                artifactId="hibernate-commons-annotations"
+                version="3.3.0.ga"/>
+    <dependency groupId="org.apache.geronimo.specs"
+                artifactId="geronimo-jta_1.1_spec" version="1.1"/>
+    <dependency groupId="log4j" artifactId="log4j" version="1.2.14"/>
+  </artifact:dependencies>
+
+  <!-- Set up the class path for compilation and execution -->
+  <path id="project.class.path">
+    <!-- Include our own classes, of course -->
+    <pathelement location="${class.root}"/>
+    <!-- Add the dependencies classpath -->
+    <pathelement location="${servlet.jar}"/>
+    <path refid="dependency.class.path"/>
+  </path>
+
+  <!-- Teach Ant how to use the Hibernate Tools -->
+  <taskdef name="hibernatetool"
+           classname="org.hibernate.tool.ant.HibernateToolTask"
+           classpathref="project.class.path"/>
+
+
+  <!-- Generate the schemas for annotated classes -->
+  <target name="schema" depends="compile"
+          description="Generate DB schema from the O/R mapping files">
+
+    <hibernatetool destdir="${source.root}">
+      <classpath refid="project.class.path" />
+      <annotationconfiguration configurationfile="${source.root}/hibernate.cfg.xml" />
+      <hbm2ddl drop="yes" />
+    </hibernatetool>
+  </target>
+
+  <!-- Create our runtime subdirectories and copy resources into them -->
+  <target name="prepare" description="Sets up build structures">
+    <mkdir dir="${class.root}"/>
+
+    <!-- Copy our property files and O/R mappings for use at runtime -->
+    <copy todir="${class.root}">
+      <fileset dir="${source.root}">
+        <include name="**/*.properties"/>
+        <include name="**/*.xml"/>
+      </fileset>
+    </copy>
+  </target>
+
+
+  <!-- Compile the java source of the project -->
+  <target name="compile" description="Compiles servlets" depends="prepare">
+    <javac srcdir="${source.root}"
+           destdir="${class.root}"
+           debug="on" optimize="off" deprecation="on">
+      <classpath refid="project.class.path"/>
+    </javac>
+    <copy todir="WEB-INF/lib" flatten="true">
+        <fileset refid="dependency.fileset"/>
+    </copy>
+  </target>
+  <exec command="wget -O - http://localhost:8080/manager/reload?path=/abook --http-user=tomcat --http-password=s3cret"/>
+
+</project>

@@ -1,0 +1,3370 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15" />
+<!-- import JAVA components -->
+<!-- import JAVA components -->
+<!-- Start Script Name: /site/layout/topStuffVars.txt -->
+<!-- End Script Name: /site/layout/topStuffVars.txt -->
+<script language=javascript>
+    <!--
+	var playerType='none';
+	var myListeningPreference = 'none';
+	var currentDate = new Date();
+	var uniqueKey = currentDate.getTime();
+	var ampSign='%26';
+	var link_url='http://www.audible.com/adbl/storepage.jsp?BV_SessionID=@@@@1794371816.1228682689@@@@&BV_EngineID=ccckadefljihificefecekjdffidfmf.0';
+ 	var addtobasket='&addtobasket=yes';
+ 	var subcategory='&category=';
+ 	var seenPopUP = 0;
+	function addToWishList(a)
+	{
+		document.basketForm.action = '/adbl/store/wishList.jsp';
+		document.basketForm.addToList.value=a;
+		document.basketForm.previousPageLink.value=self.location.href;
+		document.basketForm.addtobasket.value='no';
+		document.basketForm.submit();
+	}
+	function hideExprLink(num)
+	{
+		var linkIdName = "link"+num;
+		var nolinkIdName = "nolink"+num;
+		var linkId = document.getElementById(linkIdName);
+		var nolinkId = document.getElementById(nolinkIdName);	
+		linkId.style.display="none";
+		nolinkId.style.display="block";
+		return true;
+	}
+	function show10GreatList()
+	{
+		window.open('http://www.audible.com/adbl/promo/10greatBarker.jsp?BV_SessionID=@@@@1794371816.1228682689@@@@&BV_EngineID=ccckadefljihificefecekjdffidfmf.0','help','resizable=no,toolbar=no,location=no,menubar=no,scrollbars=no,status=no,width=327,height=570');
+	}
+	function addToBasket(a,b)
+	{
+		document.basketForm.productID.value=a;
+		document.basketForm.previousPageLink.value=self.location.href;
+		document.basketForm.submit();
+	}
+ 	function linkMe(a,b,c)
+ 		{
+			var matchMe = /^buy/;
+			if(a.match(matchMe))
+				linkThis('/store/buy.jsp','&notUsed='+a);
+ 			else if(c == addtobasket)
+ 			{
+ 				var new_string='/adbl/store/homepage.jsp?BV_SessionID=@@@@1794371816.1228682689@@@@&BV_EngineID=ccckadefljihificefecekjdffidfmf.0&contentOID='+b+'&addtobasket=yes&uniqueKey='+uniqueKey;
+ 				self.location.href=new_string;
+ 			}
+ 			else if(a == 'product')
+ 			{
+ 				var new_string='/adbl/store/product.jsp?BV_SessionID=@@@@1794371816.1228682689@@@@&BV_EngineID=ccckadefljihificefecekjdffidfmf.0&uniqueKey='+uniqueKey;
+ 				if((b.indexOf('_') > 0) || (b.indexOf('-') > 0))
+ 					new_string+='&productID='+b;
+ 				else
+ 					new_string+='&contentOID='+b;
+ 				self.location.href=new_string;
+ 			}
+ 			else if(a == 'freeStuff2')
+ 			{
+ 				self.location.href='/adbl/store/freeStuff.jsp?BV_SessionID=@@@@1794371816.1228682689@@@@&BV_EngineID=ccckadefljihificefecekjdffidfmf.0&Type=freeStuff2&uniqueKey='+uniqueKey;
+ 			}
+ 			else if(a == 'freeStuff')
+ 			{
+ 				self.location.href='/adbl/store/freeStuff.jsp?BV_SessionID=@@@@1794371816.1228682689@@@@&BV_EngineID=ccckadefljihificefecekjdffidfmf.0&Type=freeStuff1&uniqueKey='+uniqueKey;
+ 			}
+ 		else
+ 		{
+ 			if(a)
+ 				link_url+='&displayType='+a;
+ 			if(b)
+ 				{
+ 					if((b.indexOf('_') > 0) || (b.indexOf('-') > 0))
+ 						link_url+='&productID='+b;
+ 					else if (c == subcategory)
+ 						link_url+=c+b;
+ 					else
+ 						link_url+='&contentOID='+b;
+ 				}
+ 			if(c == addtobasket)
+ 				{
+ 						link_url+=c;
+ 				}
+ 			self.location.href=link_url;
+ 		}
+ 		}
+ 	function pushLink(a,b)
+ 		{
+ 			linkMe('product',a);
+ 		}
+	function linkThis(a,b)
+ 		{
+			if(myListeningPreference != 'none')
+				var d = '&setListeningPref='+myListeningPreference;
+			else
+				var d = '';
+			if(a == '/store/freestuff.jsp')
+			{
+				a='/store/freeStuff.jsp';
+				b='&Type=freeStuff1';
+			}
+/*			else if(a == '/store/myBasket.jsp')
+			{
+				a='/site/myBasket.jsp';
+			}
+			else if(a == '/store/login.jsp')
+			{
+				a='/site/login.jsp';
+			}
+			else if(a == '/store/register.jsp')
+			{
+				a='/site/buyRegister.jsp';
+			}
+*/
+			if(((parent == self) && (a != '/store/myLibrary.jsp')) || ((a == '/store/myLibraryBody.jsp') || (a == '/store/myOtherLibrary.jsp')))
+			{
+				if(b)
+	 				self.location.href='http://www.audible.com/adbl'+a+'?BV_SessionID=@@@@1794371816.1228682689@@@@&BV_EngineID=ccckadefljihificefecekjdffidfmf.0&uniqueKey='+uniqueKey+b+d;
+	 			else
+	 				self.location.href='http://www.audible.com/adbl'+a+'?BV_SessionID=@@@@1794371816.1228682689@@@@&BV_EngineID=ccckadefljihificefecekjdffidfmf.0&uniqueKey='+uniqueKey+d;
+			}
+			else
+			{
+				if(b)
+					parent.location.href='http://www.audible.com/adbl'+a+'?BV_SessionID=@@@@1794371816.1228682689@@@@&BV_EngineID=ccckadefljihificefecekjdffidfmf.0&uniqueKey='+uniqueKey+b+d;
+				else
+					parent.location.href='http://www.audible.com/adbl'+a+'?BV_SessionID=@@@@1794371816.1228682689@@@@&BV_EngineID=ccckadefljihificefecekjdffidfmf.0&uniqueKey='+uniqueKey+d;
+	 		}
+		}
+	function linkThisSecure(a,b)
+	{
+		if(a == '/store/freestuff.jsp')
+		{
+			a='/store/freeStuff.jsp';
+			b='&Type=freeStuff1';
+		}
+/*
+		else if(a == '/store/myBasket.jsp')
+		{
+			a='/site/myBasket.jsp';
+		}
+		else if(a == '/store/login.jsp')
+		{
+			a='/site/login.jsp';
+		}
+		else if(a == '/store/register.jsp')
+		{
+			a='/site/buyRegister.jsp';
+		}
+*/
+		if(b)
+			top.location.href='https://www.audible.com/adbl'+a+'?BV_SessionID=@@@@1794371816.1228682689@@@@&BV_EngineID=ccckadefljihificefecekjdffidfmf.0&uniqueKey='+uniqueKey+b;
+		else
+			top.location.href='https://www.audible.com/adbl'+a+'?BV_SessionID=@@@@1794371816.1228682689@@@@&BV_EngineID=ccckadefljihificefecekjdffidfmf.0&uniqueKey='+uniqueKey;
+	}
+ 	function popUp(a,b,c)
+ 	{
+ 		window.open(a,b,c);
+ 	}
+ 	function popUpJSP(a,b,c)
+ 		{
+ 			if(b == null)
+ 				b = '';
+ 			if(c == null)
+ 				winnew = window.open('http://www.audible.com/adbl'+a+'?BV_SessionID=@@@@1794371816.1228682689@@@@&BV_EngineID=ccckadefljihificefecekjdffidfmf.0' + b,'help','resizable=yes,toolbar=yes,location=no,menubar=yes,scrollbars=yes,status=yes,width=500,height=400');
+ 			else
+ 				winnew = window.open('http://www.audible.com/adbl'+a+'?BV_SessionID=@@@@1794371816.1228682689@@@@&BV_EngineID=ccckadefljihificefecekjdffidfmf.0' + b,'help',c);
+ 			if (window.focus) {winnew.focus()}
+ 		}
+ 	function popUpPR(a)
+ 		{
+ 			window.open(a,'help','resizable=yes,toolbar=yes,location=no,menubar=yes,scrollbars=yes,status=yes,width=500,height=400');
+ 		}
+	function setAudio(a)
+	{
+		myListeningPreference = a;
+	}
+	function returnFromSample()
+	{
+		if(document.listeningPreferencesForm.setListeningPref[0].checked)
+			self.location.href='&setListeningPref='+document.listeningPreferencesForm.setListeningPref[0].value;
+		else
+			self.location.href='&setListeningPref='+document.listeningPreferencesForm.setListeningPref[1].value;
+		return false;
+	}
+	function deleteFromCart(a)
+	{
+		document.removeCart.deleteOID.value = a;
+		document.removeCart.submit();
+	}
+	function linkCategory()
+	{
+		P_setupPopUp = false;
+		var pageArray = new Array('','/store/category.jsp','/store/category.jsp','/store/category.jsp','/store/category.jsp','/store/category.jsp','/store/category.jsp','/store/category.jsp','/store/category.jsp','/store/category.jsp','/store/category.jsp','/store/category.jsp','/store/category.jsp','/store/category.jsp','/store/category.jsp','/store/category.jsp','/store/category.jsp','/store/category.jsp','/store/category.jsp','/store/category.jsp','/store/category.jsp','/store/category.jsp','/store/sitePage.jsp');
+		var attrArray = new Array('','&categoryName=Fiction&categoryDisplayName=Fiction','&categoryName=Nonfiction&categoryDisplayName=Nonfiction','&categoryName=Business&categoryDisplayName=Business','&categoryName=InformationAge&categoryDisplayName=Information+Age','&categoryName=Science&categoryDisplayName=Science','&categoryName=ForeignLanguage&categoryDisplayName=Foreign+Language','&categoryName=Spirituality&categoryDisplayName=Spirituality','&categoryName=Kids&categoryDisplayName=Kids','&categoryName=Comedy&categoryDisplayName=Comedy','&categoryName=History&categoryDisplayName=History','&categoryName=Mystery&categoryDisplayName=Mystery','&categoryName=GreatTalkers&categoryDisplayName=Great+Talkers','&categoryName=DramaPoetry&categoryDisplayName=Drama+and+Poetry','&categoryName=SelfDevelopment&categoryDisplayName=Self+Development','&categoryName=ArtsLeisure&categoryDisplayName=Arts+and+Leisure','&categoryName=News&categoryDisplayName=News','&categoryName=Newspapers&categoryDisplayName=Newspapers','&categoryName=Magazines&categoryDisplayName=Magazines','&categoryName=Radio&categoryDisplayName=Radio','&categoryName=Speeches&categoryDisplayName=Speeches+And+Lectures','&categoryName=Audiobooks&categoryDisplayName=Audiobooks','&Type=RHAU');
+		var selectedAttr = document.categoryMovement.moveCat.options[document.categoryMovement.moveCat.selectedIndex].value;
+		if(selectedAttr == 0)
+			return false;
+		else
+		{  
+			linkThis(pageArray[selectedAttr],attrArray[selectedAttr]);
+		}
+		return true;
+	}
+	function topNavImages(img,active)
+	{
+		var oldImage = eval('document.' + img + '.src');
+		if (active == true)
+			// Show the selected image not the hover image.
+			window.document.images[img].src = (( oldImage.indexOf('_over') > 0) ? oldImage.replace(/_over/,'_down') : oldImage.replace(/_down.gif/,'_over.gif'));
+		else
+			// Show the hover image not the selected image.
+			window.document.images[img].src = (( oldImage.indexOf('_over') > 0) ? oldImage.replace(/_over/,'') : oldImage.replace(/\.gif/,'_over.gif'))
+	}
+	function newTopNavImages(img,active)
+	{
+		var oldImage = eval('document.' + img + '.src');
+		if (active == true)
+			// Show the selected image not the hover image.
+			window.document.images[img].src = (( oldImage.indexOf('_n.gif') > 0) ? oldImage.replace(/_n.gif/,'_s.gif') : oldImage.replace(/_s.gif/,'_n.gif'));
+		else
+			// Show the hover image not the selected image.
+			window.document.images[img].src = (( oldImage.indexOf('_n.gif') > 0) ? oldImage.replace(/_n.gif/,'_s.gif') : oldImage.replace(/_s.gif/,'_n.gif'))
+	}
+	function anonTopNavImages(img,active)
+	{
+		var oldImage = eval('document.' + img + '.src');
+		if (active == true)
+			// Show the selected image not the hover image.
+			window.document.images[img].src = (( oldImage.indexOf('_OFF.gif') > 0) ? oldImage.replace(/_OFF.gif/,'_ON.gif') : oldImage.replace(/_ON.gif/,'_OFF.gif'));
+		else
+			// Show the hover image not the selected image.
+			window.document.images[img].src = (( oldImage.indexOf('_OFF.gif') > 0) ? oldImage.replace(/_OFF.gif/,'_ON.gif') : oldImage.replace(/_ON.gif/,'_OFF.gif'))
+	}	
+	function jumpToCat(whichCat)
+	{
+		if (whichCat != '')
+		{
+			whichCat = whichCat.replace('&c=', '&categoryName=');
+			whichCat = whichCat.replace('&cd=', '&categoryDisplayName=');
+			linkThis('/store/category.jsp', whichCat);
+		}
+		else
+		{
+			return;
+		}
+	}
+	function loadSitelet(oID)
+	{
+		if (oID != '')
+		{
+ 			linkThis('/store/category.jsp', '&oid=' + oID);
+		}
+		else
+		{
+			return;
+		}
+	} 	
+	function jumpToSubCat(whichSubCat)
+	{
+		if (whichSubCat != '')
+			linkThis('/store/subcategory.jsp','&category=' + whichSubCat);
+		else
+			return;
+	}
+	function validateKeyword()
+	{
+		var keyword = document.basicSearchForm.data.value;
+		if ( keyword != null )
+		{
+			keyword = keyword.replace(/[^a-zA-Z0-9\x27.\x20]/g, ' ');
+			document.basicSearchForm.data.value = keyword;
+		}
+	}
+function linkURL(a,b)	{
+		if(b)
+	 				self.location.href = 'http://www.audible.com' + '/adbl' + a + '?BV_UseBVCookie=Yes' + b;
+			else
+					self.location.href = 'http://www.audible.com' + '/adbl' + a + '?BV_UseBVCookie=Yes';
+		}
+function lpURL(a,b)	{
+		if(b)
+	 				self.location.href = 'http://www.audible.com' + '/adbl' + a + '?BV_UseBVCookie=Yes' + b;
+			else
+					self.location.href = 'http://www.audible.com' + '/adbl' + a + '?BV_UseBVCookie=Yes';
+		}		
+function popWindow(url)
+{
+	url = 'http://www.audible.com' + '/adbl' + url + '?BV_UseBVCookie=Yes';
+	var newwin = window.open(url,'newwin','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=320,height=250,top=35,left=35'); 
+	//if popup blocked load in current window.
+	if (newwin == null) {
+		//window.location = url;
+	}
+	//foucs the popup
+	newwin.focus();
+}
+//-->
+</script>
+		<style>
+			<!-- End Script Name: /site/layout/store_script.txt -->
+
+			body { font-family:arial, sans-serif; font-size:88%; margin:15px; background:url("/images/nav/newbackground.jpg") fixed; }
+			#contentContainer { text-align:left; padding:0px; margin:0px auto; width:770px; position:relative; z-index:1; }
+			#adblSite { position:relative;  margin:0px auto; padding:10px 1% 1% 1%; min-width:710px; max-width:1200px; background:url("/images/nav/curve.gif") no-repeat top left #B5CB63;   }
+			#adblFooter div { margin:auto; line-height:1.5em; text-align:center;  }
+			#adblFooter img { display:inline; }
+			#adblFooter a:hover { text-decoration:underline; color:#ffffff; }
+			.footPriLink, .footSecLink { color:#ffffff; text-decoration:none; padding:0px 6px; border:0px solid #ffffff; border-width:0px 1px 0px 0px; }
+			#footerPriLinks { color:#ffffff; padding-top:20px; width:565px;  }
+			#footerPriLinks a { color:#ffffff; font-weight:bold;  }
+			p.footer { font-size:88%; text-align:center; }
+			#ftrPriLink6, #ftrPriLink11, #ftrSecLink3, #ftrSecLink7, #ftrCopyLink2 { border-right-width:0px; }
+			#footerSecLinks { padding:8px; width:330px; color:#ffffff;}
+			#footerCopyright { padding:15px;  }
+			#adblFooter { clear:both; text-align:center; font-size:78%; padding-bottom:50px; color:#cccccc; padding-top:10px;}
+			TABLE.whiteBox747 { margin:0px auto; width:747px;  }
+			TABLE.whiteBox747 DIV#expandable_label { float:left; width:746px; background: transparent url(/images/everest/layout/box_747_top_bg.gif) no-repeat bottom left; height:27px; }
+			TABLE.whiteBox747 TD.content { width:737px; color:#000; background-color:#fff; }
+			TABLE.white580 TD.content {	width: 558px; background:#ffffff; }
+			TABLE.white580_header DIV#expandable_label { float:left; width:580px; background: transparent url(/images/everest/layout/box_580_top_bg.gif) no-repeat bottom left; height: 26px; }
+
+
+			td { vertical-align:top; padding:0px; margin:0px; text-align:left; }
+			a img { border:0px; }
+			a:hover { color:#000000; }
+
+			#adblTopNav { clear:both; padding-bottom:6px; position:relative; }
+			#adblMainWin { height:100%; float:left; display:inline; padding:0px; margin:0px; clear:both; }
+
+			#travNav { text-align:center; margin:3px 0px; }
+			#skipNav { height:3px; }
+
+			/* Items in the Top Nav Container */
+			#logo { float:left; position:relative; /* clear:left; */ padding-top:28px; }
+			#loginArea { position:relative; float:right; clear:right; width:30%; font-size:88%; padding:5px 1px 3px 3px; z-index:120; }
+			#div_utilLinks { text-align:center; font-size:78%; margin: 38px 0px 22px 0px; padding-right:50px;}
+			#div_utilLinks ul { text-align:right; }
+
+
+			/* Primary nav container */
+
+			#div_mainLinks { float:left; clear:left; width:67%; height:32px; border-style:solid; position:relative; border-width:1px 2px 1px 1px;
+				border-color:#DFDABD #AAAAAA #8E917D #DCD7B7; background:url("/images/nav/mainNavBkgrnd.gif");
+			}
+
+			#ul_mainLinks { margin:0px; padding:6px 0px; list-style-type:none; font-size:88%; }
+			#ul_mainLinks li { padding:0px 6px; white-space:nowrap; border:#cccccc solid 1px; border-width:0px 0px 0px 1px;  }
+			.li_mainLink, .li_mainLinkSelected { float:left;  position:relative; top:3px; }
+			.li_mainLink a { text-decoration:none; color:#606060; }
+			.li_mainLink a:hover { text-decoration:underline; color:#000000; }
+			.li_mainLinkSelected a { text-decoration:none; color:#000000; font-weight:bold; }
+			#adbl_edu { float:right; top:-4px; }
+			li#adbl_edu, li#li_mainLink1 {  border-width:0px; }
+
+
+			#div_shopCart {
+				float:right; clear:right; width:30%; position:relative; right:4px; height:53px;
+				border-style:outset; border-width:1px 2px 1px 1px; border-color:#DFDABD #748140 #8E917D #DCD7B7;
+				background:url("/images/nav/cartNavBkgrnd.gif"); padding:4px; font-size:82%;
+			}
+			#div_shopCartItems { background:url("/images/nav/cartInnerBkgrnd.gif"); height:35px; width:69%; float:right; overflow:hidden;
+				border:inset 1px;  border-color:#DFDABD #748140 #8E917D #DCD7B7; padding:2px; vertical-align:middle; font-size:88%;
+				width:65%;
+			}
+			#div_shopCartTitle, #div_shopCartDetail { float:left; display:inline; clear:left;  }
+			#div_shopCartDetail a { color:#D34803; font-size:82%; position:relative; top:10px; white-space:nowrap; }
+			#div_ShopCartCheckOut { float:right; position:relative; top:2px; text-align:right;
+				clear:both; font-size:.82em; text-transform:uppercase;
+				float:none; width:100%; text-align:right;
+			}
+			#div_ShopCartCheckOut a { text-decoration:none; color:#D34803; font-weight:bold;  }
+			.cartItem { color:#57594E; white-space:nowrap; }
+
+			#ul_utilLinks  { padding:0px; margin:0px; text-align:center; }
+			#ul_utilLinks li { display:inline; padding:0px 4px; border-right:1px solid #000000; margin:0px; }
+			#ul_utilLinks a { color:#000000; text-decoration:none; }
+			#ul_utilLinks a:hover { text-decoration:underline; }
+			#ul_utilLinks #li_utilLink1 { padding-left:18px; font-weight:bold; }
+			#ul_utilLinks #li_utilLink5 { border-style:none; }
+			#ul_utilLinks #li_utilLink2 { font-weight:bold; }
+
+			#div_secdryLinks { background:#94A551; margin-top:3px; border:solid 1px; border-color:#DFDABD #C9D58D #8E917D #DCD7B7; }Y
+			#ul_secdryLinks  { list-style-type:none; margin:39px 0px 5px 10px; padding:0px; }
+			#ul_secdryLinks li { display:inline; padding:0px 7px 0px 0px; }
+			#ul_secdryLinks a  { font-size:82%; text-decoration:none; color:#ffffff; }
+			#ul_secdryLinks a:hover { text-decoration:underline; }
+
+			#div_loginHello { font-weight:bold; margin-bottom:6px; font-size:88%; width:66%;  }
+			#div_loginHello a { color:#D34804; white-space:nowrap; }
+			#div_loginHello a:hover { color:#000000; }
+
+			#div_loginUser, #div_loginPass, #div_loginButn { display:inline; float:left; margin:.5em .5em 0px 0px; }
+			#div_loginUser, #div_loginPass { width:40%; margin:0px; padding:0px 3px;  }
+			#div_loginButn { width:10%; position:relative; padding:0px; margin:0px; top:15px; font-size:88%;  }
+			.loginBox input{ width:95%; font-size:88%; }
+			#div_loginButn input { font-size:.87em; text-transform:uppercase; padding:0px; }
+			#div_giftBalance { font-size:88%; }
+			#loginErr { font-size:78%; color:#cc0000; font-weight:bold; width:30%; margin:0px 0px 8px 70%;}
+
+
+			/* Login Area - Reg user specific */
+			#div_alInfo { display:inline; float:left; width:62%;}
+			#div_acctLinks { display:inline; float:right; white-space:nowrap; }
+			#div_acctLinks { float:none; }
+
+
+			#div_loginForm { margin:0px; padding:0px; }
+			#div_couponInfo { font-size:88%; padding-left:2px; }
+			#div_alStatus a, #div_creditInfo a, #div_couponInfo a { color:#D34804; font-size:.86em; padding:2px;  }
+			#div_logoutButn, #div_accountButn, #div_helpButn { text-align:right; font-size:.82em; margin-bottom:3px; }
+			#div_logoutButn a, #div_accountButn a, #div_helpButn a  { text-decoration:none; color:#000000; font-weight:bold; }
+
+
+			/* ===================================== */
+
+			#adblLftNav { font-size:88%; }
+			#adblLftNav a { color:#ffffff; padding:0px; margin:0px; }
+			#adblLftNav a:hover { color:#000000; }
+			#adblLftNav form { margin:0px; padding:0px; }
+			#adblLftNav input { font-size:88%;vertical-align:bottom}
+			#adblLftNav p { margin:4px 2px; }
+			#adblLftNav select { width:65%; margin:2px 0px; font-size:88%; }
+
+			.leftNavComponent { margin:0px; display:block; }
+			#div_mainSearchArea, #div_mainMoodsArea { background:#365C17; padding:6px; width:160px; z-index:100; position:relative; }
+			#adblLftNav .search_top h2 { color:#ffffff; }
+
+			#div_mainMoodsArea { background:#537735; }
+			#div_search_top h4 { color:#D8E798; padding:3px 1px; font-size:98%; margin:0px; }
+
+			#ul_parentCatList { padding:0px; margin:3px 0px 3px 18px; list-style-image:url("/images/everest/layout/light_grn_down_arrow.gif"); }
+			#ul_parentCatList li { text-decoration:none; font-weight:bold; }
+
+
+			.h1_catListTitle { color:#25420D; font-size:14px; font-weight:bold; margin:0px; padding:6px 4px 2px 10px;}
+			.h1_catListSubTitle { color:#25420D; font-size:14px; font-weight:bold; margin:0px; padding:6px 4px 2px 10px;}
+			#div_catList { margin:0px 0px; }
+
+			#ul_catList { padding:0px; margin:5px 0px 15px 25px; list-style-image:url("/images/everest/layout/light_grn_cat_bullet.gif"); color:#ffffff; }
+
+			li.selectedCat a { text-decoration:none; }
+
+			#ul_catListHeader {	padding:0px; margin:0px; list-style-image:url("/images/everest/layout/orange_cat_arrow.gif"); }
+			#ul_catListHeader li { margin-left:12px; color:#D34803; }
+			#ul_catList a { color:#ffffff; text-decoration:none; margin:4px 0px; font-weight:normal;  font-weight:bold;}
+			#ul_catList a:hover, #ul_catList a:active { color:#000000; text-decoration:underline; }
+			#ul_catList li.selected { font-weight:bold; font-size:92%; color:#000000; margin:1px 0px; text-decoration:none;
+				list-style-image:url("/images/nav/blackbullet.gif");  }
+
+
+			#adblLftNavItems1 { background:#ffffff; height:100%; margin-right:5px; padding:0px 0px 20px 0px; }
+			.keyWordSearch { width:90%; margin:2px 0px; font-size:98%; }
+			#ul_parentCatList1 { padding:0px; margin:3px 0px 3px 5px;  }
+			#ul_parentCatList1 li { text-decoration:none; font-weight:bold; }
+			#ul_catList1 { padding:0px; margin:5px 0px 15px; color:#000000; }
+			#ul_catList1 a { color:#000000; text-decoration:none; margin:4px 0px; font-weight:normal;}
+			#ul_catList1 a:hover, #ul_catList1 a:active { color:#0000ff; text-decoration:underline; }
+			#ul_catList1 li.selected { font-weight:bold; font-size:92%; color:#000000; margin:1px 0px; text-decoration:none;
+				list-style-image:url("/images/nav/blackbullet.gif");  }
+
+
+			/* Till here */
+
+			#adblLftNavItems { background:#A0B549; height:100%; margin-right:5px; padding:5px 0px 20px 0px; }
+			.keyWordSearchAnon { width:75%; margin:2px 0px; font-size:98%; }
+			.hdr_search h3 { font-size:92%;  color:#D34803; display:inline; position:relative; margin-left:5px; background:#ffffff; padding:4px 6px; z-index:120; top:2px;}
+
+			#div_adSlot1, #div_adSlot3 { text-align:center; }
+			#div_adSlot2, #div_adSlot4 { display:none; text-align:center;  }
+			select#categoryListDrop { width:98%; margin-top: 4px; }
+
+			/* End of the Left Nav Styles */
+
+
+			/* ===================================== */
+
+
+			#bottomCurve { display:none; }
+
+
+			#content_columns { position:relative; z-index:110; clear:both;}
+			#content_columns_2 TD.left, #content_columns_3 TD.left, #content_columns_2 TD.right { padding-top:40px; }
+			#content_columns_3 TD.right { padding: 10px 0 0 0; }
+
+			#left_column, #mid_column, #right, #right_column { vertical-align:top; padding-top:15px;  }
+			#left_column { width:23%; }
+			content_columns_2 TD.left { width:23%; }
+
+			#mid_column { position:relative; z-index:20; padding-left:5px; /* border:dotted 1px #0000ff; */}
+			.right { padding-top:15px; z-index:-1; padding-left:5px; }
+			.right img { display: block; }
+			#right_column { padding-top:10px; float:right; /* border:dotted 1px #00ff00; */ z-index:-1; }
+
+			#right_margin { width:1px; }
+			#search_container { height:100%; width:100%; }
+			#expandable_label { float:left; width:100%; background:transparent url(/images/everest/layout/box_177_top_bg.gif) no-repeat bottom left; height:25px; font-size:72%; }
+
+			td.content { font-size:92%; }
+			.catalog td.info h4, .catalog td.info p { font-size:88%; }
+
+
+
+			TABLE.white580 { background-color: #fff; }
+			TABLE.white580 TD.marginLeft { width:9px; }
+			TABLE.white580 TD.marginRight{ width:10px; }
+			TABLE.white580 TD.dropShadow { width:3px; background: transparent url(/images/everest/layout/3px_green_drop.gif) repeat; }
+			TABLE.white580 DIV.goBack { padding: 8px 360px 8px 0; margin: 0; border: 0; float: left; }
+			TABLE.white580 INPUT.continueShopping { padding: 8px 308px 8px 0; margin: 0; border: 0; float: left; }
+			TABLE.white580 INPUT.completePurchase { padding: 8px 0 8px 0; margin: 0; border: 0; float: right; }
+			TABLE.white580 INPUT.nextStep { padding: 8px 0 8px 37px; margin: 0; border: 0; float: right; }
+
+			TABLE.whiteBox747 TD.leftMargin, TABLE.whiteBox747 TD.rightMargin { width:8px; background-color:#fff; }
+			TABLE.whiteBox747 TD.dropShadow { width:3px; background: transparent url(/images/everest/layout/3px_green_drop.gif) repeat; }
+
+
+
+
+			table.regForm input { font-size:88%; }
+
+
+			.s9i, .s10i, .s11i, .s12i, .s131 {font-style:italic;}
+			.s9b, .s10b, .s11b, .s12b, .s13b {font-weight:bold;}
+			.s9, .s9b, .s9i, TD.credits, TD.credits A, TD.account_details,
+			DIV.view_all, DIV.view_all A  {font-size:9px;line-height:11px;}
+			.s10, .s10b, .s10i {font-size:10px;line-height:13px;}
+			.s11, .s11b, .s11i {font-size:11px;line-height:15px;}
+			.s12, .s12b, .s12i {font-size:12px;line-height:17px;}
+			.s13, .s13b, .s13i {font-size:13px;line-height:18px;}
+			.s9, .s9b, .s9i, .s10, .s10b, .s10i, .s11, .s11b, .s11i, .s12, .s12b, .s12i, .s13, .s13b, .s13i {font-family:verdana,geneva,sans-serif;}
+			STRONG {font-weight: bold;}
+			.black {
+				color: #000;
+			}
+
+			.orange {
+				color: #D34803;
+			}
+
+
+
+
+			.titleGray, .titleOrange {
+				color : #42413C;
+				font-weight: bold;
+				text-decoration: none;
+				}
+			.titleOrange {color : #D34803;}
+
+
+
+
+
+
+
+
+
+
+
+
+			TABLE#secondaryNavWrapper #bottom {
+				height: 3px;
+				background:transparent;
+			}
+
+
+
+			TABLE.genForm{
+				width : 554px;
+				background-color : #E9ECDE;
+			}
+			TABLE.genForm TD.genFormTop {
+				background: url(/images/everest/layout/bg_genForm_top.gif) no-repeat top left;
+				padding: 9px 0 0 7px;
+			}
+			TABLE.genForm TR.bg1 {
+				background-color :#e1e5d1;
+			}
+			TABLE.genForm TR.bg2 {
+				background-color :#F1F3E9;
+			}
+			TABLE.genForm TR.bg3 {
+				background-color :#C6C9BA;
+			}
+			TABLE.genForm TD {
+				vertical-align : middle;
+				font-size:88%;
+			}
+			TABLE.genForm TH {
+				font-size:88%;
+				font-weight:bold;
+				background-color : #C6C9BA;
+			}
+			TABLE.genForm TH.title{
+				padding:10px 0 10px 10px;
+				width:86px;
+			}
+			TABLE.genForm TH.expiration{
+				width:151px;
+			}
+			TABLE.genForm TH.email{
+				width:169px;
+			}
+			TABLE.genForm TH.renew{
+				padding-right:10px;
+				width:119px;
+			}
+			TABLE.genForm TD.title{
+				padding:4px 0 4px 10px;
+				width:86px;
+			}
+			TABLE.genForm TD.expiration{
+				width:151px;
+			}
+			TABLE.genForm TD.email{
+				padding-left:30px;
+				width:139px;
+			}
+			TABLE.genForm TD.renew{
+				width:119px;
+			}
+			TABLE.genForm TD.submit{
+				padding:4px 0 0 10px;
+				background-color:#C6C9BA;
+			}
+			TABLE.genForm TD.user{
+				padding:10px 10px 10px 10px;
+			}
+			TABLE.genForm TD.formModule{
+				padding:10px;
+				text-align:left;
+			}
+			TABLE.genForm INPUT{
+				width:145px;
+			}
+			TABLE.genForm INPUT.address{
+				width:215px;
+			}
+			TABLE.genForm INPUT.zip{
+				width:80px;
+			}
+			TABLE.genForm INPUT.check{
+				width:20px;
+			}
+			TABLE.genForm INPUT.emailCheck{
+				width:20px;
+			}
+			TABLE.genForm A{
+				color: #D65819;
+				text-decoration: underline;
+			}
+			TABLE.genForm TD.modSpacer, DIV.modSpacer {
+				height:1px;
+			}
+			h3.moduleHead {
+				font-size: 92%;
+				color: #233603;
+				font-weight: bold;
+				padding: 0 0 8px 0;
+			}
+			.wMargin {
+				height: 1px;
+				background-color: #fff;
+			}
+			.bold {
+				font-weight:bold;
+			}
+
+
+
+
+
+
+
+
+			TD.logout, TD.account_details {
+				color: #000;
+			}
+
+			TD.credits, TD.credits A, TD.credits A:visited, DIV.view_all, DIV.view_all A, TABLE#message_content DIV.alert A {
+				color: #D34803;
+			}
+			TD.credits A:link, DIV.view_all A:link, TABLE#message_content DIV.alert A:link {
+				color: #D34803;
+			}
+			TD.credits A:visited, DIV.view_all A:visited, TABLE#message_content DIV.alert A:visited {
+				color: #913C12;
+			}
+			TD.credits A:hover, DIV.view_all A:hover, TABLE#message_content DIV.alert A:hover {
+				color: #000;
+			}
+			TD.credits A:active, DIV.view_all A:active, TABLE#message_content DIV.alert A:active {
+				color: #000;
+			}
+
+			IMG {
+			/*	display: block; */
+				padding: 0; margin: 0; border: 0;
+			}
+			IMG.inline {
+				display: inline;
+			}
+
+
+
+
+
+			TABLE#user_messaging {
+				width: 770px;
+				background-color: #B6CA64;
+				text-align: left;
+			}
+
+			TD.curve {
+				width: 17px;
+			}
+			.w_496 {
+				width: 496px
+			}
+			TABLE#user_messaging TD#message {
+				width: 240px
+			}
+
+			TABLE#message_content {
+				width: 240px;
+				background-color: #A0B549;
+				display: none;
+			}
+
+			TABLE#message_content DIV.alert p,
+			TABLE#message_content DIV.promo p {
+				margin: 0 0 0 17px;
+			}
+
+			TABLE#message_content DIV.alert P,
+			TABLE#message_content DIV.promo P,
+			TABLE#message_content DIV.promo A,
+			TABLE#message_content DIV.alert A  {
+				 font-size: 10px; line-height:13px; font-weight: bold;
+			}
+
+
+			TABLE#message_content DIV.promo A:link {
+				color: #233603
+			}
+
+			TABLE#message_content DIV.promo A:visited {
+				color: #666
+			}
+
+			TABLE#message_content DIV.promo A:hover {
+				color: #000
+			}
+
+			TABLE#message_content DIV.promo A:active {
+				color: #000
+			}
+
+			TABLE#message_content DIV.alert {
+				background: url(/images/everest/layout/alert_asterix.gif) no-repeat bottom left;
+			}
+
+			TABLE#message_content TD.bot_curve {
+				height: 5px; vertical-align: bottom;
+			}
+
+
+
+
+
+
+			DIV#payment_btns {
+				border: 0; white-space: nowrap;
+				width: 157px; margin: 7px 0 0 0; padding: 0;
+			}
+			DIV#payment_btns IMG#express {
+				display:inline; float: left;
+			}
+			DIV#payment_btns IMG#co {
+				display:inline; float: right;
+			}
+
+
+
+			DIV#primary_nav_bar_landing {
+				width: 770px; height: 34px;
+				background: #B6CA64 url(/images/everest/btn/bg_anon_nav.gif) no-repeat top;
+
+			 }
+
+			#primeNav_landing {
+				position: relative;
+				top: 0;
+				left: 0;
+				width: 770px;
+				z-index: 0;
+				padding:0;
+			 }
+
+			#primeNavContainer_landing{
+				width:  770px;
+				height: 34px;
+				float: left;
+				z-index: 50;
+				position: relative;
+			 }
+
+			TABLE#landing {
+				border: 1px;
+				width: 770px;
+				background-color: transparent;
+				position: relative; top: 5px; left: 22px;
+				display: block;
+			}
+
+			TABLE#noNav {
+				border: 1px;
+				width: 770px;
+				background-color: transparent;
+				position: relative; top: 5px; left: 22px;
+				display: block;
+			}
+
+
+			TABLE#landing TD IMG{
+				display: inline;
+			}
+
+			TD#btn_browse {
+				width: 120px;
+			}
+			TD#btn_mbrBenefits {
+				width: 129px;
+			}
+			TD#btn_howAudibleWorks {
+				width: 140px;
+			}
+			TABLE#landing{
+				width: 300px;
+			}
+
+
+			TABLE#emptycart {
+				float: right;
+				z-index: 100; position: relative;
+				width: 250px; height: 64px;
+			}
+
+			TABLE#cart TD#nonespacer {
+				width: 0px;
+			}
+
+			TD#btn_nav_home {
+				width: 100px;
+			}
+			TD#btn_nav_myLib {
+				width: 98px;
+			}
+			TD#btn_nav_wishList {
+				width: 75px;
+			}
+			TD#btn_howAudibleWorks {
+				width: 140px;
+			}
+			TD#btn_nav_joinSave {
+				width: 77px;
+			}
+
+			TD#btn_nav_mbrBenefits {
+				width: 155px;
+			}
+			TD#btn_nav_join {
+				width: 107px;
+			}
+			TD#btn_joinSave {
+				width: 77px;
+			}
+
+			TD#mbr_nav_benefits {
+				width: 129px;
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			#expandable_label {
+			    float:left;
+			    width:100%;
+				background: transparent url(/images/everest/layout/box_177_top_bg.gif) no-repeat bottom left;
+				height: 25px;
+			}
+
+
+			TABLE.lrg_box_gray_top DIV#expandable_label {
+			    float:left;
+			    width:100%;
+				background: transparent url(/images/everest/layout/bg_gray_curve_top_392.gif) no-repeat bottom left;
+				height: 25px;
+			}
+			#expandable_label ul, TABLE.lrg_box_gray_top DIV #expandable_label ul {
+			    margin:0 10px 0 10px;
+			    padding:0;
+			    list-style:none;
+			}
+			#expandable_label li.right, #expandable_label li.left, TABLE.lrg_box_gray_top #expandable_label li.left, TABLE.white580_header #expandable_label li.left {
+			    float:right;
+				background:url(/images/everest/layout/right_slider.gif)
+			    no-repeat right bottom;
+			    margin:0;
+			    padding:0;
+			}
+
+			#expandable_label li.left,  TABLE.lrg_box_gray_top #expandable_label li.right, TABLE.white580_header #expandable_label li.right  {
+				float:left;
+			}
+			#expandable_label div {
+				background:url(/images/everest/layout/left_slider.gif) no-repeat left bottom;
+			    padding: 6px 15px 6px 15px;
+				margin: 0; border: 0;
+				line-height: 15px;
+			}
+			TABLE.lrg_box_gray_top #expandable_label div {
+				background:url(/images/everest/layout/left_slider.gif) no-repeat left bottom;
+				margin: 0; border: 0;
+				line-height: 15px;
+			}
+
+			TABLE.lrg_box_gray_top P.catalogInfo {
+				color: #000;
+				font-size:88%;
+				float: right; width: 305px;
+			}
+			.clearBoth {
+				clear: both;
+			}
+			TABLE.lrg_box_gray_top P.price {
+				width: 305px; float: right;
+				padding: 3px 0 3px 0; margin: 0; border: 0;
+
+			}
+			TABLE.lrg_box_gray_top P.price SPAN {
+				color: #D34803;
+			}
+			TABLE.lrg_box_gray_top DIV.sample {
+				width: 86px; padding-top: 3px;
+				float: left;
+			}
+			.small_box {
+				width: 177px;
+				font-size:88%;
+			}
+			.small_box ul { margin:10px 0px; font-size:1.2em; }
+			.small_box li { }
+			.lrg_box_gray_top {
+				width: 392px; background:#ffffff;
+			}
+			.right_drop_shadow {
+				background: transparent url(/images/everest/layout/box_177_right_shadow_tile.gif) repeat-y;
+			}
+			.lrg_box_gray_top .right_drop_shadow {
+				width: 392px;
+				background: transparent url(/images/everest/layout/box_392_right_shadow_tile.gif) repeat-y;
+				padding-top: 15px;
+			}
+			table.small_box P {
+				text-align: left;
+				color: #233603;
+				margin: 0 15px 15px 15px;
+			}
+			table.small_box P.thumb {
+				width: 174px;
+				text-align:center; margin: 12px 0;
+			}
+			table.small_box P.go_right, .go_right {
+				float:right;
+				margin-bottom: 0;
+			}
+
+			table.small_box H3 {
+				margin: 10px 15px 0 15px;
+				font-size: 88%;
+				font-weight: bold;
+			}
+			table.small_box A:link,  DIV.trio_container A:link, TABLE.lrg_box_gray_top P.catalogInfo A:link {
+				color: #D34803;
+			}
+			table.small_box A:visited,  DIV.trio_container A:visited, TABLE.lrg_box_gray_top P.catalogInfo A:visited {
+				color: #913C12;
+			}
+			table.small_box A:hover, table.small_box A:active,  DIV.trio_container A:hover, DIV.trio_container A:active, TABLE.lrg_box_gray_top P.catalogInfo A:hover, TABLE.lrg_box_gray_top P.catalogInfo A:active {
+				color: #000;
+			}
+			TABLE.lrg_box_gray_top TD.gradient {
+				height: 24px;
+				background: url(/images/everest/layout/bg_gray_curve_top2_392.gif) no-repeat top left;
+				vertical-align: middle;
+			}
+			TABLE.lrg_box_gray_top TD.gradient DIV.items {
+				width: 170px; float: left;
+				padding-left: 5px;
+			}
+			TABLE.lrg_box_gray_top TD.gradient DIV.viewAll,  TABLE.lrg_box_gray_top TD.botCurve DIV.viewAll {
+				float: right; width: 52px;
+				padding: 2px 10px 0 0;
+			}
+			TABLE.lrg_box_gray_top TD.botCurve {
+				height: 25px;
+				background: url(/images/everest/layout/bg_gray_curve_bot_392.gif) no-repeat bottom left;
+				vertical-align: middle;
+			}
+			TABLE.lrg_box_gray_top DIV.catThumb {
+				width: 86px; float: left;
+			}
+			TABLE.lrg_box_gray_top DIV.catThumb IMG {
+				padding: 0 10px 0 10px;
+			}
+
+			TABLE.whiteBox164 {
+				width: 164px;
+			}
+			TABLE.whiteBox164 DIV#expandable_label {
+				float:left;
+			    width:164px;
+				background: transparent url(/images/everest/layout/box_164_top_bg.gif) no-repeat bottom left;
+				height: 25px;
+			}
+			TABLE.whiteBox164 TD.leftMargin, TABLE.whiteBox164 TD.rightMargin {
+				width: 8px;
+				background-color: #fff;
+			}
+			TABLE.whiteBox164 TD.dropShadow, TD.box371_dropShadow {
+				width: 3px;
+				background: transparent url(/images/everest/layout/3px_green_drop.gif) repeat;
+			}
+			TABLE.whiteBox164 TD.content {
+				width: 145px;
+				font-size:78%;
+				color: #000;
+				background-color: #fff;
+			}
+			TABLE.whiteBox164 div#expandable_label img.goRight {
+				float: right; padding: 0 10px 0 0;
+			}
+
+
+
+			P.hSpace10px {
+				padding: 0 10px;
+			}
+
+			.textGreen {
+				color: #244608;
+			}
+			P.detailBlock {
+				color: #000;
+				padding-bottom: 10px;
+				margin-top: 10px;
+				border-bottom: 1px solid #ccc;
+			}
+			P.last {
+				border-bottom: 0px;
+				padding-bottom: 0;
+			}
+			P.editDetails {
+				float: right;
+			}
+			P.editDetails A:link,  P.editDetails A:visited {
+				color: #DA942C;
+			}
+			P.editDetails A:hover,  P.editDetails A:active {
+				color: #000;
+			}
+
+			TABLE.box371 {
+				width: 371px;
+				background-color: #fff;
+			}
+			TD.box371_l_margin {
+				width: 9px;
+			}
+			TD.box371_r_margin {
+				width: 4px;
+			}
+			TD.box371_content {
+				width: 355px;
+			}
+			TD.box371_content H3,  TD.pq201_content H3 {
+				color: #000;
+				font-size: 11px; line-height: 14px;
+				font-weight: bold;
+				margin: 10px 0; padding: 0;
+			}
+			TD.pq201_content H3 {
+				margin: 3px 0;
+			}
+			TD.box371_content P,  TD.pq201_content P{
+				font-size: 11px; line-height: 13px;
+			}
+
+			TABLE.pq201 {
+				width: 201px;
+				margin: 10px 0 10px 10px;
+				padding: 0;
+				float: right;
+				font-size: 9px; line-height: 11px;
+			}
+			TABLE.pq201 TD, TABLE.pq201 DIV, TABLE.pq201 IMG, TABLE.pq201 P {
+				margin: 0; padding: 0; border: 0;
+			}
+			TABLE.pq201 P.price {
+				margin: 10px 0 10px 0;
+				padding: 0;
+			}
+			TD.pq201_l_margin, TD.pq201_r_margin {
+				width: 5px;
+				background-color: #E3E3E3;
+			}
+			TD.pq201_dropShadow, TD.gb355_dropShadow {
+				width: 5px;
+				background: #E3E3E3 url(/images/everest/layout/pullquote_dropShadow.gif) repeat-y top left;
+			}
+			TD.pq201_content {
+				width: 186px;
+				background-color: #E3E3E3;
+			}
+			TD.pq201_content .goLeft {
+				float: left; margin: 5px 0 3px 0; padding: 0;
+			}
+			TD.pq201_content P.bookInfo {
+				width: 110px; margin: 5px 0 3px 5px; float: right;
+				line-height: 12px;
+			}
+			.lineThrough {
+				text-decoration: line-through;
+			}
+			TD.pq201_content DIV.btns {
+				width: 101px; float: right;
+			}
+			TD.pq201_content DIV.btns IMG {
+				display: inline;
+			}
+			TD.pq201_content DIV.credits {
+				width: 70px; float: left;
+				color: #D34803;
+			}
+
+
+			TABLE.grayBox355 {
+				width: 355px;
+				background-color: #E3E3E3;
+				margin: 0; padding: 0; border: 0;
+			}
+			TD.gb355_l_margin, TD.gb355_r_margin {
+				width: 10px;
+			}
+			TD.gb355_content {
+				width: 330px;
+			}
+			TD.gb355_content .goLeft {
+				float: left; margin: 5px 0 3px 0; padding: 0;
+			}
+			TD#otherSimilarItems H3 {
+				margin: 0; padding: 0;
+			}
+			TD#otherSimilarItems DIV#leftBook {
+				width: 160px; float: left;
+				margin: 0; padding: 8px 5px 5px 0;
+			}
+			TD#otherSimilarItems DIV#rightBook {
+				width: 160px; float: left;
+				margin: 0; padding: 8px 5px 8px 0;
+			}
+			TD#otherSimilarItems DIV#leftBook IMG, TD#otherSimilarItems DIV#rightBook IMG {
+				width: 72px; float: left;
+				margin: 0; padding: 0 3px 0 0;
+			}
+			TD#otherSimilarItems DIV#leftBook P.bookInfo, TD#otherSimilarItems DIV#rightBook P.bookInfo {
+				width: 85px;  float: right;
+				padding: 0; margin: 0;
+				font-size: 9px; line-height: 11px;
+			}
+
+
+			TABLE.whiteBox206 {
+				width:206px; font-size:78%;
+			}
+			TABLE.whiteBox206 DIV#expandable_label {
+				float:left;
+			    width:206px;
+				background: transparent url(/images/everest/layout/box_206_top_bg.gif) no-repeat bottom left;
+				height: 25px;
+			}
+			TABLE.whiteBox206 TD.wB206_leftMargin, TABLE.whiteBox206 TD.wB206_rightMargin {
+				width: 8px;
+				background-color: #fff;
+			}
+			TABLE.whiteBox206 TD.wB206_dropShadow {
+				width: 3px;
+				background: url(/images/everest/layout/3px_green_drop.gif) repeat-y;
+			}
+			TABLE.whiteBox206 TD.wB206_content {
+				width: 187px;
+				color: #000;
+				background-color: #fff;
+			}
+			TABLE.whiteBox206 TD.wB206_content_normal {
+				width: 187px;
+			}
+
+			TABLE#recentlyViewed DIV.audioTitle {
+				width: 100px; float: left; margin: 5px 0 0 0; padding: 0;
+			}
+			TABLE#recentlyViewed DIV.audioTitle OL {
+				border: 0px solid red;
+				margin: 0 0 0 25px; padding: 0;
+			}
+			TABLE#recentlyViewed DIV.audioTitle OL LI {
+				margin: 0px; font-size: 9px; line-height: 14px;
+				padding: 0;
+			}
+			TABLE#recentlyViewed DIV.grayRule {
+				border-bottom: 1px solid #ccc; padding-top: 5px;
+			}
+			TABLE#recentlyViewed DIV.btns {
+				width: 82px; float: right;
+				margin: 5px 0 0 0; padding: 0;
+			}
+
+			TABLE#description TD.wB206_leftMargin {
+				width: 18px
+			}
+			TABLE#description TD.wB206_rightMargin {
+				width: 5px
+			}
+			TABLE#description TD.wB206_content {
+				width: 180px;
+			}
+			TABLE#description TD, TABLE#description P {
+				font-size: 10px; line-height: 11px;
+			}
+			TABLE#description P {
+				padding: 0; margin: 0 0 5px 0;
+			}
+			TABLE#description H3 {
+				font-size: 12px; line-height: 15px;
+				font-weight: bold; color: #42413C;
+				padding: 8px 0 0 0; margin: 0;
+			}
+			TABLE#description H3 A:link, TABLE#description H3 A:visited, TABLE#description H3 A:hover, TABLE#description H3 A:active {
+				font-weight: normal; color: #42413C
+			}
+			TABLE#description H3 A:hover, TABLE#description H3 A:active {
+				color: #000;
+			}
+			TABLE#description DIV.descThumb {
+				width: 180px; padding: 5px 0; text-align:center;
+			}
+			TABLE#description DIV.descThumb IMG {
+				display: inline;
+			}
+			TABLE#description IMG.sample {
+				padding-top: 5px;
+			}
+			TABLE#description DIV.crd {
+				width: 75px; float: left;
+				color: #D34803;
+				font-size: 12px;
+				padding: 5px 0; margin: 0;
+			}
+			TABLE#description DIV.crd1 {
+				width: 75px; float: left;
+				color: #D34803;
+				font-size: 12px;
+				padding: 5px 0; margin: 0;
+			}
+			TABLE#description DIV.crd2 {
+				width: 75px; float: left;
+				color: #D34803;
+				font-size: 12px;
+				padding: 5px 0; margin: 0;
+			}
+			TABLE#description DIV.add {
+				width: 101px; float: right;
+				padding: 5px 0; margin: 0;
+			}
+			TABLE#description DIV.add IMG, TABLE#description P.rating IMG, TABLE#description P.actions IMG   {
+				display: inline;
+				vertical-align:text-bottom;
+			}
+			TABLE#description P.rating {
+				color: #7F7F7F;
+			}
+			TABLE#description1 P {
+				padding: 0; margin: 0 0 0 0;
+			}
+			TABLE#description1 DIV.add IMG,TABLE#description1 P.ratingnew IMG,  TABLE#description1 P.actions IMG   {
+				display: inline;
+			}
+			TABLE#description1 H4 {
+				font-size: 13px;
+				font-weight: bold; color: #42413C;
+				padding: 0 0 0 0; margin: 0;
+			}
+
+			TABLE#description1 H3 {
+				font-size: 12px;
+				font-weight: bold; color: #42413C;
+				padding: 0 0 0 0; margin: 0;
+			}
+
+			TABLE#description1 H2 {
+				font-size: 11px;
+				font-weight: bold; color: #000000;
+				padding: 0 0 0 0; margin: 0;
+			}
+
+
+
+			TABLE#description1 DIV.alert {
+				font-size: 10px;
+				text-align: center;
+				font-weight: bold; color: #D34803;
+				padding: 0 0 0 0; margin: 0;
+			}
+
+
+			TABLE#description P.actions,  TABLE#description P.actions A, TABLE#description P.actions A:link, TABLE#description P.actions A:visited, TABLE#description P.actions A:hover, TABLE#description P.actions A:active {
+				font-size: 11px; line-height: 15px;
+				font-weight: bold; color: #42413C;
+				text-decoration: none;
+			}
+
+
+			.trio_container {
+				width: 400px;
+				margin: 0; padding: 0; border: 0;
+				color: #233603;
+				background-color: transparent;
+				height: 110px;
+			}
+			.trio_container DIV {
+				width: 110px;
+				height: 102px;
+				margin: 0;
+				padding: 8px 8px 0 8px;
+				background-color: #A0B549;
+				margin-right : 5px;
+				float : left;
+				display : inline;
+			}
+			.trio_container DIV P {
+				margin: 0;
+				font-size: 9px;
+				line-height: 11px;
+			}
+			.trio_container DIV H2 {
+				margin: 0 0 10px 0;
+				font-size: 11px; line-height: 13px;
+				color: #D34803;
+			}
+			DIV.trio_container P.go_right  {
+				float:right;
+				margin: 8px 0 0 0;
+			}
+			#right_column {
+				 padding-left : 10px;
+			}
+			.promoImage {
+				position : relative;
+				left : -9px;
+				z-index : 0;
+				margin:0;
+			}
+
+
+			#categoryPicks {
+				background: transparent url(/images/everest/layout/bg_picks_gray_gradient.jpg) no-repeat;
+				width: 393px; height: 345px;
+				vertical-align:middle; text-align:center;
+				padding: 0 0 5px 0; margin: 0;
+			}
+			.catSliderContainer {
+				width: 393px;
+			}
+			.catSliderContainer TD {
+
+			}
+			.gradientTop {
+				height: 13px; width: 393px;
+			}
+			.leftMargin {
+				width: 8px;
+			}
+			#new_Releases, #bestSeller, #customerPicks {
+				width: 99px;
+				vertical-align: middle;
+			}
+			#categoryPicks H4 {
+				margin: 0; padding: 0; border: 0;
+				font-size: 10px; line-height: 13px;
+				color: #000;
+			}
+			#categoryPicks P {
+				font-size: 9px; line-height: 11px;
+				color: #4E4E4D;
+				margin: 0; padding: 0; border: 0;
+			}
+			.catSlider {
+				width: 278px;
+				padding: 0; margin: 0; border: 0;
+			}
+			TD#catSlider TABLE.slider {
+				background: transparent url(/images/everest/layout/bg_cat_picks_slider_tile.gif) repeat-y;
+				width: 278px;
+				margin: 0; padding: 0; border: 0;
+			}
+
+			TABLE.slider TD {
+				text-align: center;
+				font-size:92%;
+				color: #000;
+				padding-right: 6px;
+				vertical-align:top;
+				width : 97px;
+				overflow : hidden;
+				padding-top:9px;
+
+			}
+
+			TD#catSlider TABLE.slider TD {
+				font-size:78%;
+				padding: 0; margin: 0; border: 0;
+				width: 33.3%;
+				vertical-align: top;
+			}
+			.rightMargin {
+				width: 8px;
+			}
+			TABLE.catSliderContainer TD.sectionMargin {
+				height: 5px;
+			}
+			TD#catSlider DIV.tabs_bottom_curve {
+				width: 278px; height: 19px;
+				background: transparent url(/images/everest/layout/bg_cat_pics_slider_bot.gif) no-repeat; text-align:right;
+				margin: 0; padding: 0; border: 0;
+			}
+			TABLE.slider TD.botMargin {
+				height: 2px;
+			}
+			OL#top10 {
+				font-size:1em;
+				margin: 5px 10px 5px 10px; padding-left: 20px;
+			}
+			OL#top10 LI {
+				color: #233603;
+				font-weight: bold;
+			}
+			OL#top10 LI UL {
+				margin:0;padding: 0;
+			}
+			OL#top10 LI UL LI {
+				list-style-type:none;
+				margin:2px 0px 4px 0px; padding-left:0px;
+				color: #233603; font-size:1em;
+				font-weight: normal;
+			}
+			#moreBooksBy TD DIV.content {
+				min-height: 98px;
+				height:auto!important;height:98px;;
+				overflow : visible;
+				font-size:1em;
+			}
+			  #rowLgray {
+				background: #f1f3e9;
+			    }
+			    #rowMgray {
+				background: #e1e5d1;
+			    }
+			    #rowDgray {
+				background: #c6c9ba;
+			    }
+			    #rowMgrayL {
+				background: #e1e5d1 url(/images/everest/mgray_tl_corner.gif) no-repeat top;
+			    }
+			    #rowMgrayR {
+				background: #e1e5d1 url(/images/everest/mgray_tr_corner.gif) no-repeat top;
+			    }
+			    #rowLgrayL {
+				background: #f1f3e9 url(/images/everest/lgray_bl_corner.gif) no-repeat top;
+			    }
+			    #rowLgrayR {
+				background: #f1f3e9 url(/images/everest/lgray_br_corner.gif) no-repeat top;
+			    }
+			    #rowMgrayBL {
+				background: #e1e5d1 url(/images/everest/mgray_bl_corner.gif) no-repeat top;
+			    }
+			    #rowMgrayBR {
+				background: #e1e5d1 url(/images/everest/mgray_br_corner.gif) no-repeat top;
+			    }
+			    #rowWhite {
+				background: #fff;
+			    }
+			    A.aOptions{
+				font-size:88%;
+				padding-left:15px;
+				color: #D34803;
+			    }
+			    A.cOptions{
+					color: #D34803;
+			    }
+
+			    A.cOptions10{
+				font-size:10px;
+				line-height:11px;
+				color: #D34803;
+			    }
+
+			    A.cOptions11{
+				font-size:11px;
+				line-height:11px;
+				color: #D34803;
+			    }
+			    A.aOptions:hover, A.cOptions:hover{
+				color: #000;
+			    }
+			    TD.aOptions {
+				text-align: right;
+				padding:8px 0px 8px 0px;
+			    }
+			    TD.boxTitle {
+				text-align:left;
+				font-size: 12px;
+				font-weight: bold;
+				color: #000;
+				padding:8px 0px 8px 0px;
+			    }
+			    TR.rowDgray TD {
+				font-weight:bold;
+			    }
+			    TD.pad {
+				padding-left: 10px;
+				padding-top: 5px;
+				border-left:#fff 1px solid;
+			    }
+			    TD.padTop{
+				padding-top: 5px;
+			    }
+				.pad10bot {
+				padding-bottom:10px;
+				}
+
+
+
+			TABLE#edu_login, TABLE#anon_login {
+				width: 240px;
+				display: block;
+			}
+			TABLE#edu_login TD {
+				padding: 10px 0 0 0;
+			}
+			TABLE#edu_login INPUT.btn_go {
+				width: 24px; height: 8px;
+				margin: 0; padding: 0;
+			}
+			TABLE#forgotPassword_login {
+				width:250px;
+			}
+			TABLE#forgotPassword_login TD.forgot {
+				width: 164px;
+				text-align:left;
+			}
+			TABLE#forgotPassword_login TD.forgot A, TABLE#forgotPassword_login TD.forgot:link {
+				color: #D34803;
+				font-size: 9px; line-height: 11px;
+			}
+			TABLE#forgotPassword_login TD.forgot A:visited {
+				color: #913c12;
+				font-size: 9px; line-height: 11px;
+			}
+			TABLE#forgotPassword_login TD.forgot A:hover, TABLE#forgotPassword_login TD.forgot:active {
+				color: #000;
+				font-size: 9px; line-height: 11px;
+			}
+			IMG#btns_edu {
+				padding: 10px 0 0 5px;
+			}
+			DIV.btns_student {
+				padding: 8px 0 3px 5px;
+			}
+			DIV.btns_student IMG {
+				display: block; margin: 0; padding: 0; border: 0;
+			}
+			.orangeLink A, .orangeLink A:link {
+				color: #d34803;
+			}
+			.orangeLink A:visited {
+				color: #913c12;
+			}
+			.orangeLink A:hover, .orangeLink A:active {
+				color: #000;
+			}
+			DIV#MemberLogin {
+				padding-bottom: 5px;
+				white-space:nowrap;
+			}
+
+			.clearBoth5 {
+				width: 2px;
+			}
+
+
+
+
+
+
+			TABLE.tabs {
+				width: 392px;
+				margin: 0; padding: 0; border: 0;
+			}
+			TABLE.tabs371 {
+				width: 371px; height: 25px;
+				margin: 0; padding: 0; border: 0;
+				background: transparent url(/images/everest/layout/bg_tabs371.gif) no-repeat bottom left;
+			}
+
+			TABLE.tabs371_3 {
+				width: 371px; height: 25px;
+				margin: 0; padding: 0; border: 0;
+				background: transparent url(/images/everest/layout/bg_tabs371.gif) no-repeat bottom left;
+			}
+
+			TABLE.tabs206 {
+				width: 206px; height: 25px;
+				margin: 0; padding: 0; border: 0;
+				background: url(/images/everest/layout/bg_tabs206.gif) no-repeat bottom left;
+			}
+
+			TABLE.tabs TD,  TABLE.tabs371 TD, TABLE.tabs371_3 TD, TABLE.tabs206 TD {
+				margin: 0; border: 0; padding: 0;
+				text-align: center; vertical-align: middle;
+			}
+
+			TABLE.tabs371 TD.left_curve {
+				width: 7.5px;
+			}
+			TABLE.tabs371_3 TD.left_curve {
+				width: 7.5px;
+			}
+			TABLE.tabs206 TD.left_curve {
+				width: 6px;
+			}
+
+			TD.mid_off A:link, TD.mid_off A:visited,
+			TD.mid_off A:hover,
+			TD.mid_off A:active, TD.right_off A:link, TD.right_off A:visited,
+			TD.right_off A:hover,
+			TD.right_off A:active, TD.left_off A:link, TD.left_off A:visited,
+			TD.left_off A:hover,
+			TD.left_off A:active,
+			TD.tt580_l_off A:link, TD.tt580_l_off A:visited, TD.tt580_l_off A:hover, TD.tt580_l_off A:active,
+			TD.tt580_mid_off A:link, TD.tt580_mid_off A:visited, TD.tt580_mid_off A:hover, TD.tt580_mid_off A:active,
+			TD.tt580_r_off A:link, TD.tt580_r_off A:visited, TD.tt580_r_off A:hover, TD.tt580_r_off A:active {
+				color: #42413C;
+				text-decoration : none;
+			}
+			TD.bt580_r_off A:link, TD.bt580_r_off A:visited,
+			TD.bt580_l_off A:link, TD.bt580_l_off A:visited,
+			TD.bt580_mid_off A:link, TD.bt580_mid_off A:visited {
+				color: #42413C;
+				text-decoration : none;
+				font-size: 9px;
+			}
+			TD.bt580_r_on A:link, TD.bt580_r_on A:visited,
+			TD.bt580_l_on A:link, TD.bt580_l_on A:visited,
+			TD.bt580_mid_on A:link, TD.bt580_mid_on A:visited {
+				color: #D34803;
+				text-decoration : none;
+				font-size: 9px;
+				font-weight: bold;
+			}
+			TD.mid_on A:link, TD.mid_on A:visited,
+			TD.mid_on A:hover,
+			TD.mid_on A:active, TD.right_on A:link, TD.right_on A:visited,
+			TD.right_on A:hover,
+			TD.right_on A:active, TD.left_on A:link, TD.left_on A:visited,
+			TD.left_on A:hover,
+			TD.left_on A:active,
+			TD.tt580_mid_on A:link, TD.tt580_mid_on A:visited, TD.tt580_mid_on A:hover, TD.tt580_mid_on A:active,
+			TD.tt580_r_on A:link, TD.tt580_r_on A:visited, TD.tt580_r_on A:hover, TD.tt580_r_on A:active,
+			TD.tt580_l_on A:link, TD.tt580_l_on A:visited, TD.tt580_l_on A:hover, TD.tt580_l_on A:active {
+				color: #42413c;
+				font-weight : bold;
+				text-decoration : none;
+			}
+
+
+			TABLE.tabs TD.left_on A SPAN, TABLE.tabs TD.mid_on A SPAN, TABLE.tabs TD.right_on A SPAN,
+			TABLE.tabs371 TD.left_on A SPAN, TABLE.tabs371 TD.mid_on A SPAN, TABLE.tabs371 TD.right_on A SPAN,
+			TABLE.tabs206 TD.left_on A SPAN, TABLE.tabs206 TD.mid_on A SPAN, TABLE.tabs206 TD.right_on A SPAN,
+			TABLE.topTabs580 TD.tt580_l_on A SPAN, TABLE.topTabs580 TD.tt580_mid_on A SPAN, TABLE.topTabs580 TD.tt580_r_on A SPAN {
+				color: #D34803;
+				font-weight : bold;
+			}
+
+
+			TABLE.tabs371_3 TD.left_on A SPAN, TABLE.tabs371_3 TD.mid_on A SPAN, TABLE.tabs371_3 TD.right_on A SPAN {
+				font-size: 10px;
+				color: #D34803;
+				font-weight : bold;
+			}
+
+			TABLE.tabs A.titleGray:link, TABLE.tabs A.titleGray:visited, TABLE.tabs A.titleGray:hover, TABLE.tabs A.titleGray:active,
+			TABLE.tabs371 A.titleGray:link, TABLE.tabs371 A.titleGray:visited, TABLE.tabs371 A.titleGray:hover, TABLE.tabs371 A.titleGray:active,
+			TABLE.tabs371_3 A.titleGray:link, TABLE.tabs371_3 A.titleGray:visited, TABLE.tabs371_3 A.titleGray:hover, TABLE.tabs371_3 A.titleGray:active,
+			TABLE.tabs206 A.titleGray:link, TABLE.tabs206 A.titleGray:visited, TABLE.tabs206 A.titleGray:hover, TABLE.tabs206 A.titleGray:active
+			{
+				color: #42413C;
+			}
+
+
+
+
+			TABLE.tabs TD.left_off,  TABLE.tabs TD.left_on {
+				background:url(/images/everest/layout/tab_left_on.gif) no-repeat top left;
+				width: 124px;
+				position: relative; z-index: 100;
+			}
+			TABLE.tabs TD.left_off {
+				background:url(/images/everest/layout/tab_left_off.gif) no-repeat top left;
+			}
+			TABLE.tabs371 TD.left_off,  TABLE.tabs371 TD.left_on {
+				background:url(/images/everest/layout/tab371_left_on.gif) no-repeat top left;
+				width: 89px;
+				position: relative; z-index: 100;
+			}
+			TABLE.tabs371 TD.left_off {
+				background:url(/images/everest/layout/tab371_left_off.gif) no-repeat top left;
+			}
+
+
+			TABLE.tabs371_3 TD.left_off,  TABLE.tabs371_3 TD.left_on {
+				background:url(/images/everest/layout/tab371_3_left_on.gif) no-repeat top left;
+				width: 120px;
+				position: relative; z-index: 100;
+			}
+			TABLE.tabs371_3 TD.left_off {
+				background:url(/images/everest/layout/tab371_3_left_off.gif) no-repeat top left;
+			}
+
+
+			TABLE.tabs206 TD.left_off,  TABLE.tabs206 TD.left_on {
+				background:url(/images/everest/layout/tab206_left_on.gif) no-repeat top left;
+				width: 64px;
+				position: relative; z-index: 100;
+			}
+			TABLE.tabs206 TD.left_off {
+				background:url(/images/everest/layout/tab206_left_off.gif) no-repeat top left;
+			}
+			TABLE.tabs TD.mid_off,  TABLE.tabs TD.mid_on, .mid_on {
+				background:url(/images/everest/layout/tab_mid_on.gif) no-repeat top left;
+				width: 123px;
+				position: relative; z-index: 100;
+			}
+			TABLE.tabs TD.mid_off {
+				background:url(/images/everest/layout/tab_mid_off.gif) no-repeat top left;
+			}
+
+			TABLE.tabs371 TD.mid_off,  TABLE.tabs371 TD.mid_on, .mid_on {
+				background:url(/images/everest/layout/tab371_mid_on.gif) no-repeat top left;
+				width: 89px;
+				position: relative; z-index: 100;
+			}
+			TABLE.tabs371 TD.mid_off {
+				background:url(/images/everest/layout/tab371_mid_off.gif) no-repeat top left;
+			}
+
+
+			TABLE.tabs371_3 TD.mid_off,  TABLE.tabs371_3 TD.mid_on {
+				background:url(/images/everest/layout/tab371_3_mid_on.gif) no-repeat top left;
+				width: 120px;
+				position: relative; z-index: 100;
+			}
+			TABLE.tabs371_3 TD.mid_off {
+				background:url(/images/everest/layout/tab371_3_mid_off.gif) no-repeat top left;
+			}
+
+
+			TABLE.tabs206 TD.mid_off,  TABLE.tabs206 TD.mid_on, .mid_on {
+				background:url(/images/everest/layout/tab206_mid_on.gif) no-repeat top left;
+				width: 64px;
+				position: relative; z-index: 100;
+			}
+			TABLE.tabs206 TD.mid_off {
+				background:url(/images/everest/layout/tab206_mid_off.gif) no-repeat top left;
+			}
+
+			TABLE.tabs TD.right_off,  TABLE.tabs TD.right_on {
+				background:url(/images/everest/layout/tab_right_on.gif) no-repeat top left;
+				width: 124px;
+				position: relative; z-index: 100;
+			}
+			TABLE.tabs TD.right_off {
+				background:url(/images/everest/layout/tab_right_off.gif) no-repeat top left;
+			}
+
+			TABLE.tabs371 TD.right_off,  TABLE.tabs371 TD.right_on {
+				background:url(/images/everest/layout/tab371_right_on.gif) no-repeat top left;
+				width: 89px;
+				position: relative; z-index: 100;
+			}
+			TABLE.tabs371 TD.right_off {
+				background:url(/images/everest/layout/tab371_right_off.gif) no-repeat top left;
+			}
+
+
+			TABLE.tabs371_3 TD.right_off,  TABLE.tabs371_3 TD.right_on {
+				background:url(/images/everest/layout/tab371_3_right_on.gif) no-repeat top left;
+				width: 120px;
+				position: relative; z-index: 100;
+			}
+			TABLE.tabs371_3 TD.right_off {
+				background:url(/images/everest/layout/tab371_3_right_off.gif) no-repeat top left;
+			}
+
+
+			TABLE.tabs206 TD.right_off,  TABLE.tabs206 TD.right_on {
+				background:url(/images/everest/layout/tab206_right_on.gif) no-repeat top left;
+				width: 66px;
+				position: relative; z-index: 100;
+			}
+			TABLE.tabs206 TD.right_off {
+				background:url(/images/everest/layout/tab206_right_off.gif) no-repeat top left;
+			}
+
+			.chapter DIV {
+				display : none;
+				margin-left : 6px;
+				padding-top : 5px;
+				height : 81px;
+				overflow : hidden;
+			}
+			.tabContainer {
+				margin-bottom : 9px;
+				font-size:88%;
+			}
+			.tabs_bottom_curve P {
+				float: right;
+				margin-right: 10px;
+			}
+			DIV.tabs_bottom_curve {
+				width: 392px; height: 23px;
+				background: transparent url(/images/everest/layout/tabs_bottom_curve.gif) no-repeat; text-align:right;
+			}
+			DIV.tabs_bottom_curve IMG {
+				display: inline;
+				vertical-align: text-bottom;
+			}
+
+
+			.chapter {
+				background-color : #fff;
+				width : 392px;
+				height :90px;
+				background: transparent url(/images/everest/layout/tabs_content_bg_tile.gif) repeat-y;
+			}
+
+
+
+			.pageMenu {
+				margin-right : 6px;
+			}
+			.pageMenu A {
+				font-size : 9px;
+			}
+			.pageMenu A.r0 {
+				text-decoration : underline;
+				color : #d34803;
+			}
+			.pageMenu A.r1 {
+				text-decoration : none;
+				color : #3f3f3f;
+				font-weight : bold;
+			}
+
+			TABLE.slider TD A, TABLE.slider TD A:link, TABLE.slider TD A:visited {
+				color: #000;
+				text-decoration: none;
+			}
+
+			TABLE.slider TD A:hover, TABLE.slider TD A:active {
+				text-decoration: underline;
+			}
+
+
+
+			TABLE.slider TD IMG {
+				display : inline;
+				text-align :center;
+			}
+
+			.tabs_bottom_curve DIV {
+				margin-right : 4px;
+				text-align : right;
+				padding-top : 3px;
+			}
+
+			.tabs_bottom_curve DIV IMG {
+				display: inline;
+				padding: 0;
+				margin-right : 3px;
+				border: 0;
+				vertical-align : bottom;
+			}
+
+
+
+			TABLE.tabHeader {
+				margin: 0; padding: 0; border: 0;
+			}
+			TABLE.tabHeader TD.title {
+				background: url(/images/everest/layout/tab_header_bg.gif) repeat-x;
+				vertical-align:middle; text-align:center;
+				padding: 0 3px;
+			}
+			TABLE#tabhdrMorebooks {
+				float: right;
+			}
+			TABLE.tabHdrContainer_206 {
+				width: 206px;
+			}
+
+
+
+
+
+				#adblSite { overflow: hidden;  float:none !important; float:left;  }
+				#adblLftNav { float:left; margin-top:18px; width:23%;  }
+				#adblLftNav h2 { color:#25420D; font-size:1.18em; margin:0px; }
+
+				#left_column #adblLftNav { width:100%; margin-top:0px; }
+				#left_column #adblLftNav #div_mainSearchArea { width:auto; }
+
+				input._action { border:1px #c0c0c0 outset; background:#d75e21; color:#ffffff; font-size:88%; font-weight:bold;  padding:1px 10px; margin:0px;}
+
+				.pageGuts a:link { color:#155799; }
+				.pageGuts a:hover { color:#e05d26; }
+				.pageGuts a:visited, .pageGuts a:active { color:#b94e21; }
+
+				.pageGuts form { margin:0px; padding:0px; }
+
+				.pageGuts { color:#333333; float:right; clear:right; background:#ffffff; margin:30px 0px 30px 0px; border:outset 1px #c0c0c0; font-size:92%; width:73%; padding:0px 1.5% 15px 1.5%; position:relative; }
+				.pageGuts h1 { background:#ffffff; color:#e05d26; font-weight:bold; position:relative; top:-8px; left:0px; font-size:82%; display:inline;
+					border:1px #c0c0c0 outset; border-color:#efefef #c0c0c0 #c0c0c0 #efefef; border-width:1px; margin:0px; padding:3px 13px; clear:both;
+				}
+
+
+				.pageGuts h2 { font-size:110%; margin:12px 0px 4px 0px; clear:both; }
+				.pageGuts h3 { font-size:98%; margin-bottom:3px; }
+				.pageGuts h4 { font-size:92%; font-style:italic; margin-bottom:4px; }
+				.pageGuts p { margin-top:.75em; }
+
+
+				.pageGuts table { width:100%; }
+				.pageGuts table img.colSortArrow { padding:0px 2px; }
+				.pageGuts table th { background:#dedede; padding:1% .5%; }
+				.pageGuts table tr.tr_a { background:#efefef; }
+				.pageGuts table td { padding:.5% 1%; vertical-align:middle; }
+
+				.backToMain { text-align:right; position:absolute; right:15px; top:.5em; }
+				.backToMain a { padding-left:10px;  }
+				.errorMsg { color:#CC0000; font-weight:bold; }
+
+				.disclaimer { padding:5px 0px; font-size:88%; clear:both; }
+				.finePrint  { font-size:88%; clear:both; }
+
+				/*	Start Global Form Styles */
+				.frm_elmt { margin-bottom:10px; }
+				.frm_lbl, .frm_lbl_error { text-align:right; float:left; clear:left; width:33%; margin-top:3px; padding-right:5px; }
+				.frm_val { clear:right; }
+				.frm_hlp { font-size:88%; }
+				.frm_lbl_error { color:#CC0000; font-weight:bold; }
+				/*	End Global Form Styles */
+
+
+				/*	Start Global Text Styles */
+				.txt_elmt { clear:both; padding:.5% 3%; width:auto; }
+				.txt_lbl { clear:left; font-weight:bold; font-size:98%; }
+				.txt_val { clear:right; padding-left:4px; }
+				.txt_lbl, .txt_val, .txt_hlp { float:left; width:auto; }
+				.txt_hlp { display:none; }
+				/*	End Global Text Styles */
+
+
+
+
+				.podGuts_A {
+					width:22%; background:#ffffff; float:left; clear:left;
+					border:outset 1px; border-color:#999999 #999999 #999999 #999999;
+					padding:10px 1%; margin:20px .5% 18px 1%; font-size:92%;
+				}
+				.podGuts_A h2 {
+					font-size:82%; color:#e05d26; background:#ffffff; display:inline;
+					padding:3px 6px 4px 6px; position:relative; top:-18px; border:outset 1px;
+					border-color:#efefef #c0c0c0 #c0c0c0 #efefef;
+				}
+				.podGuts_A h3 { font-size:92%; margin:10px 0px 0px 0px ; padding:3px 0px;  }
+				.podGuts_A p {margin:0px; padding:0px 0px 8px 0px ;  }
+				.podGuts_A ul { padding:0px 10px; margin:0px 0px 8px .5em; }
+				.podGuts_A ul li { margin:0px; padding:0px 0px 3px 0px; }
+				.podGuts_A ol { padding:0px 10px; margin:0px 0px 8px 1.5em; }
+				.podGuts_A ol li { margin:0px; padding:0px 0px 3px 0px; }
+				.podGuts_A ul.productThumbnail { list-style:none; margin:0px; }
+				.podGuts_A ul.productThumbnail li { margin:0px 0px 20px 0px;  text-align:center; }
+				.podGuts_A a img { border:0px; }
+
+
+				/*	Style for pods used on the My Account Page */
+				.podGuts_B { width:49%; margin:.5%; float:left; background:#f7f7f7; height:13em !important; height:225px; position:relative; }
+				.podGuts_B h2 { }
+				.podGuts_B h3 { clear:both; margin:0px; padding:6px 8px; background:#efeeee; border-bottom: 1px #ffffff solid;  }
+				.podGuts_B .editInfo { position:absolute; top:.5em; right:1em; display:inline; }
+
+
+
+			#viewAllCats { font-size:88%; }
+			#viewAllCats #abridged { float:left; font-weight:bold; width:30%; padding:0px 9px; margin-bottom:10px; }
+			#viewAllCats #unabridged { float:left; font-weight:bold; width:60%; margin-bottom:10px; }
+			#viewAllCats .catDetails { width:30%; float:left; padding:8px; ;  }
+			#viewAllCats #item_0, #viewAllCats #item_1, #viewAllCats #item_2 { height:19em; }
+			#viewAllCats #item_3, #viewAllCats #item_4 { height:19em; }
+			#viewAllCats #item_5, #viewAllCats #item_6 { height:9em; }
+			#viewAllCats #item_7, #viewAllCats #item_8, #viewAllCats #item_9 { height:21em; }
+			#viewAllCats #item_10, #viewAllCats #item_11, #viewAllCats #item_12 { height:18em; }
+			#viewAllCats #item_13, #viewAllCats #item_14, #viewAllCats #item_15 { height:19em; }
+			#viewAllCats #item_16, #viewAllCats #item_17, #viewAllCats #item_18 { height:15em; }
+			#viewAllCats #item_7, #viewAllCats #item_13, #viewAllCats #item_16  { clear:left;}
+			#viewAllCats h3 { margin-bottom:4px; }
+			#viewAllCats ul { margin:0px 0px 10px 13px; padding:0px; }
+			#viewAllCats ul li { padding:2px; }
+
+
+
+
+			#workAtAudible h2 { color:#e05d26; }
+			#workAtAudible h3 { color:#e05d26; font-size:110%; padding-top:15px; }
+			#workAtAudible .backToTop { text-align:right; position:relative;
+				border:0px #999999 solid; border-bottom-width:1px; padding-bottom:15px; clear:both;
+			}
+
+			/* DownloadSoftware Page */
+			.softwareGroup { padding-bottom:10px;width:100%; border:0px solid #c0c0c0; border-bottom-width:1px; clear:both; float:left; }
+			.softwareItem  { padding:13px 0px; clear:left; width:100%; }
+			.softwareIcon { width:9.5%; text-align:center; float:left; overflow: hidden; height:100%;  }
+			.softwareDesc { width:90%; float:left; }
+			.softwareLink { width:90%; margin-left:10%; padding-top:1px;  }
+			.cdBurnOptions { padding-left:5px; width:30%; float:left; }
+
+
+			/* Affiliates Pages */
+			#affiliates table { width:auto; }
+			#affiliates ul { margin:0px 0px 5px 25px; }
+			#affiliates .c2 { text-align:center; }
+
+			#affiliates .frm_lbl { width:20%; }
+			#affiliates #yourPid .frm_val { float:left; width:25%;}
+			#affiliates #linkReq { width:60%; }
+			#affiliates #outputWindow { width:80%; height:75px; }
+			#affiliates .podGuts_B { height:auto !important; }
+
+
+			#siteMap #audioCategory { clear:left; }
+			#siteMap .siteMapSection { float:left; margin:7px; }
+			#siteMap ul { margin:0px; padding:0px; list-style-type:none;  }
+			#siteMap ul li { width:12.5em; padding:0px 0px 2px 5px; }
+
+			/*#listOfLists { padding:0px .5% 15px; } */
+			#listOfLists .podGutsGroup { background:#f7f6f7; background:transparent;  overflow:hidden; margin-top:25px; height:100%;}
+			#listOfLists .podGuts_B {
+				position:relative; height:auto !important; margin:0px 1%; width:47.25%; overflow:hidden;
+			}
+			#listOfLists .podGuts_B .subHead { padding:0px 3%; display:block; }
+
+			#audibleAir #aalogo { padding:10px 0px; }
+			#audibleAir #flashContainer  { text-align:center; padding-bottom:20px; }
+			#audibleAir h2.devMfgr { border:0px #666666 solid; border-top-width:1px; padding-top:8px;  }
+			#audibleAir p { margin-top:0px; }
+			#audibleAir #deviceAnimation { float:left; padding:0px 20px 0px 0px; height:32em; width:18%; }
+			#audibleAir #aaDescription  { float:right; height:32em; width:77%;  }
+			#audibleAir #btnSubmit { padding:10px 0px; }
+			#audibleAir ul { padding:0px; margin:0px;  }
+			#audibleAir ul li { display:inline; margin-right:12px;   }
+			#audibleAir ul li a { }
+
+			#catalog .catalogLink { font-weight:bold; display:inline; }
+			#catalog .catalogDLoad { padding-bottom:10px; }
+
+			#rssFeeds .allFeeds { width:58%; clear:both; }
+			#rssFeeds .rssFeedName { float:left; }
+			#rssFeeds .rssFeedLink { float:right; }
+			#rssFeeds .indRssFeed { float:left; border-bottom:1px dotted #c0c0c0; padding:4px 0px; clear: both; width: 100%;}
+			#rssFeeds .rssInfo {clear:both; padding-top:25px; }*
+
+			/* Podcasts Category */
+			#podCastCat #podCastIntro { width:97%; padding:10px 0px; }
+			#podCastCat .btnCTA { clear:both; margin:8px; text-align:right; }
+			#podCastCat .podcastItem { width:20%; padding:1%; font-size:92%; margin:1%; text-align:center; float:left; height:18em;  }
+			#podCastCat .podcastItem .cover { padding:4px 0px; }
+			#podCastCat .sample { clear:both; margin:4px 0px; width:100%; float:left; }
+			#podCastCat .sampleIcon, #podCastCat .sampleText { float:left; width:33%; padding:0px .5em; font-size:98%; }
+			#podCastCategory {  padding:0px; padding-bottom:25px; }
+			#podCastCategory li { float:left; margin:.25em 1.5em .25em 1em; font-weight:bold;  }
+
+
+			#podcasting div.podcastLink { width:48%; float:left; }
+
+			#podcasts .btn_seeAll { text-align:right; clear:both; padding-top:10px; }
+			#podcasts .prodLineItem { width:110px; float:left; text-align:center; height:200px; padding:0px 10px; }
+			#podcasts .prodLineItem .sample { padding:2px 4px; }
+			#podcasts .sample object { padding-top:2px;}
+			#podcasts h2 { padding:12px 0px 10px 10px; clear:both; }
+
+
+
+			#xPressCheckout { width:96.5%; float:right; clear:right; }
+			#xPressCheckout #terms  { padding:0px 10px; }
+			#xPressCheckout #agree  { padding:0px 10px 20px 10px; clear:both; }
+			#xPressCheckout .frm_lbl { clear:none; margin-left:0px; text-align:left; }
+			#xPressCheckout .frm_val { clear:none; width:30px; float:left; }
+			#xPressCheckout .frm_elmt { clear:both; }
+			#xPressCheckout #pmtSource { clear:both; background:#f7f7f7; margin:10px 0px; padding:4px; font-weight:bold; }
+			#xPressCheckout .cover { float:left; padding-right:15px; }
+			#xPressCheckout .title { font-weight:bold; margin:2px 0px;}
+			#xPressCheckout .author { margin:2px 0px; }
+			#xPressCheckout #btnAction { text-align:right; float:right; }
+			#xPressCheckout #addToCart, #xPressCheckout #link, #xPressCheckout #nolink { float:left;  padding:30px 10px 0px 10px; }
+			#xPressCheckout #nolink { display:none; }
+
+			#checkout .cover { width:12%; text-align:center; }
+			#checkout .youPay, #checkout .subPrice { width:13%; text-align:right; padding-right:2%; }
+			#checkout .applyCredits { width:17%; text-align:center; }
+			#checkout .subTot td { font-weight:bold; }
+
+			#confirmation { width:96.5%; float:right; clear:right; }
+
+
+
+			.layout_default{ margin-top:18px; padding-top:10px; }
+			#newReleases h1 , .layout_default h1 { font-size:175%; display:block; border:0px; padding:4px 0px 4px 0px; color:#e05d26; }
+			#newReleases #description , .layout_default #description { padding-bottom:9px; border-bottom: 1px solid #E1E1E1; }
+
+			.leadingProdResults, .trailingProdResults { float:left; clear:both; width:100%; }
+
+			.resultsSummary, .resultsPaging { /*width:48%;*/ margin:0px; padding:1px .5%; font-size:92%; float:left; line-height:2em; }
+			.notSelected { text-align:center; }
+			.resultsPaging { float:right;text-align:right; font-weight:bold; padding-right:0px; }
+			.resultsPaging span { margin:.125em; padding:0px .5em; color:#155799; }
+			.resultsPaging span a { border:1px solid #ffffff; padding:0px 3px; color:#155799; text-decoration:none; }
+			.resultsPaging span a:visited { color:#155799; text-decoration:none; }
+			.resultsPaging span a:hover { border-color:#155799; color:#155799; }
+			.resultsPaging span.selected { color:#333333; }
+			.resultsPaging span.nextLink { padding-right:0px; border-left:1px #e1e1e1 solid; }
+			.resultsPaging span.prevLink { border-right:1px #e1e1e1 solid; }
+			.resultsPaging span.nextPrevOff { color:#cccccc; }
+			.nextPrev { text-transform:uppercase; }
+			.trailingProdResults { border:0px #e1e1e1 solid; border-width:1px 0px 1px 0px; }
+
+			#newReleasesFilter { background:#f1f1f1; border:1px solid #e1e1e1; border-bottom:2px solid #e05d26; float:left; width:100%; }
+			.nr_filterSelected { background:#e05d26; }
+			.nr_filterSelected a:link { color:#ffffff; }
+			.filterLink { width:19.75%; float:left; text-align:center; padding:.5em 0px; }
+			.filterLink a { display:block; border-right:1px solid #e1e1e1; }
+			.nr_filterSelected a { border:0px; }
+			#nr_ThisWeek, #nr_LastWeek, #nr_2_WksAgo, #nr_3_WksAgo { width:22.5%; }
+			#nr_x_WksAgo { width:9.9%; }
+			#nr_x_WksAgo a { border:0px; }
+			#newReleasesSortBy { clear:both; border:#e1e1e1 solid 1px; border-top-width:0px; float:left; width:100%; }
+			#newReleasesSortBy div { float:left; padding:.75em; width:auto; text-align:center; font-size:92%; margin:0px auto; }
+			#newReleasesSortBy div select { font-size:98%; /*margin-left:8px;*/ }
+			#newReleasesSortBy div#nr_SortByFaithfulness { text-align:right; float:right; padding-right:18px;}
+
+			.prodLineItemDisplay { float:left; clear:both; width:100%; margin:13px 0px; font-size:92%; }
+			#newReleases .prodAudioVisual, .layout_default .prodAudioVisual { width:19%; float:left; text-align:center; margin:0px 10px 0px 0px; padding:0px; }
+			#newReleases .prodData , .layout_default .prodData { width:40%; float:left; min-height:90px; height:90px }
+			#newReleases .title , .layout_default .title { font-size:1.1em; font-weight:bold; margin:0px; padding:0px; }
+			#newReleases .version , .layout_default .version { text-transform:uppercase; color:#666666; }
+			#newReleases .audioLength , .layout_default .audioLength {  }
+			#newReleases .prodPrices , .layout_default .prodPrices { float:right; width:39%; margin-top:5px}
+			#newReleases .prodPrices .txt_elmt , .layout_default .prodPrices .txt_elmt { padding-left:0px; }
+			#newReleases .prodActions , .layout_default .prodActions { float:right; width:39%; margin:3px 0px;}
+
+			.prodPrices .txt_lbl { font-weight:normal; }
+			.prodPrices .priceMbr .txt_val { font-weight:bold; }
+
+			#newReleases .sample,  .layout_default .sample{ font-size:88%; font-weight:bold; }
+			#newReleases .sampleImg , .layout_default .sampleImg{ padding-left:8px; }
+			#newReleases .addToCart, #newReleases .wishList, .layout_default .addToCart, .layout_default .wishList { padding:2px 0px;}
+
+			.strikeOut{ text-decoration:line-through;}
+			.priceSale{ color:#E02626; font-weight:bold;}
+			.priceSale .txt_lbl{font-weight:bold;}
+
+			#subList .leadingProdResults  { border:0px solid #e1e1e1; border-top-width:1px; }
+			#subList .prodLineItemDisplay { float:left; clear:both; width:100%; padding:10px 0px 5px 0px; margin:0px; font-size:92%; border:0px #e1e1e1 solid; border-top-width:1px;  }
+			.pageGuts .prodAudioVisual { width:19%; float:left; text-align:center; margin:0px 10px 0px 0px; padding:0px; }
+			.pageGuts .prodData { width:40%; float:left; min-height:90px; }
+
+			.pageGuts .version { text-transform:uppercase; color:#666666; }
+			.pageGuts .audioLength {  }
+			.pageGuts .prodPrices { float:right; width:39%; margin-top:5px}
+			.pageGuts .prodPrices .txt_elmt { padding-left:0px; }
+			.pageGuts .prodActions { float:right; width:39%; margin:3px 0px;}
+
+			.prodPrices .txt_lbl { font-weight:normal; }
+			.prodPrices .priceMbr .txt_val { font-weight:bold; }
+			.pageGuts .sample { font-size:88%; font-weight:bold; }
+			.pageGuts .sampleImg { padding-left:8px; }
+			.pageGuts .addToCart, .pageGuts .wishList { padding:2px 0px;}
+
+
+			#advSearchHeader { background-color:#F1F1F1; border-bottom:solid #999999 1px; margin-bottom:12px; float:left;clear:both; width:100%; }
+			#advSearch #keywordInfo { padding:2%; float:left; width:50%; margin-left:2px;}
+			#advSearch #top15Searches { padding:3% 1%; font-size:92%; float:right; width:43%; }
+			.overlaydiv { height:250px; width:150px; z-index:100; }
+			#KSpan,#TSpan,#ASpan,#NSpan { position:relative;z-index:0; padding:0px 1.8%; font-weight:bold; margin:0px; }
+			#advSearch #NSpan { border-width:0px; }
+			#searchSugg ul { position:relative; top:-1em; }
+			#searchRepeater { padding-bottom:10px; }
+
+			.intLanding td { text-align:center; vertical-align:top; font-size:92%; width:24.5%; margin-bottom:1em; }
+			.intLanding td .author { font-size:92%; }
+			.intLanding td img { padding-bottom:8px; }
+
+			.intLndg_topBanner { text-align:center; padding-top:10px; }
+			table.intLndg_tmpl { text-align:center; padding:0px; margin:0px; margin-top:1em;   }
+			table.intLndg_tmpl tr { vertical-align:top;  }
+			table.intLndg_tmpl td { text-align:center; width:23%; margin:7px 1%; padding:0px; padding-bottom:15px;}
+			.star_full{
+				background:transparent url(/images/everest/landing/t4/new/T4_star_full.gif) no-repeat scroll 0 3px;
+			}
+			.star_half{
+				background:transparent url(/images/everest/landing/t4/new/T4_star_half.gif) no-repeat scroll 0 3px;
+			}
+			.star_empty{
+				background:transparent url(/images/everest/landing/t4/new/T4_star_empty.gif) no-repeat scroll 0 3px;
+			}
+			.star_def{
+				float:left;
+				height:0;
+				overflow:hidden;
+				padding-top:13px;
+				width:11px;
+			}
+			#layout_default .prodLineItemDisplay {
+				padding:13px 0;
+				margin:0;
+				border-top:1px solid #CED0C8;
+			}
+			#layout_default .leadingProdResults{
+				border-top: 1px solid #CED0C8;
+			}
+
+			#universityInfo { width:96.5%; float:right; clear:right; }
+			#expand_content { width:96.5%; float:right; clear:right; }
+
+
+			.intLndg_topBanner { padding-bottom:1em;  }
+			#int_lndg_templateB { clear:both; margin:0px auto; width:100%; padding-top:.75em;  }
+			#int_lndg_templateB .contentBlock { text-align:center; width:23.5%; float:left; margin:.5%;}
+			#int_lndg_templateB .contentDesc { height:4em; padding-top:.25em; }
+			#int_lndg_table { width:66%; float:left; padding-bottom:1.5em;  }
+			#int_lndg_table tr td { padding:0px; margin:0px;}
+			#int_lndg_table tr td img { padding:0px 8px 0px 0px; }
+			.pageGuts table td { vertical-align:top; }
+
+
+			#free_chapters {background-color:#B5CB63;clear:right;float:left;margin:0;padding:0;width:100%;}
+
+
+			/*<link rel="stylesheet" type="text/css" href="/css/core.css?abc=123" />*/
+		</style>
+		<script src="/js/rollover.js" language="javascript"></script>
+<script src="/js/menu.js" type="text/javascript"></script>	
+		<script type="text/javascript" src="http://assets.loomia.com/js/include.js"></script>
+		<title>Audiobooks: buy AUDIO books online at Audible.com</title>
+  		<meta name="description" content="Audiobooks, including a variety of audio magazines and newspapers, are available in Audible's eBook store.">
+		<meta name="keywords" content="audiobooks, buy audio books online, audio magazines, audio newspapers, audible">
+		<script src="/js/menuRecomm.js" type="text/javascript"></script>
+		<script>
+			//This is used in recommMagic.js
+			var prodRecommDetailUrl = 'http://www.audible.com/adbl/site/products/ProductDetail.jsp?recom=yes&loomia_rx=1&productID=$!prod_id!$&BV_UseBVCookie=Yes';
+			var prodBSDetailUrl = 'http://www.audible.com/adbl/site/products/ProductDetail.jsp?productID=$!prod_id!$&BV_UseBVCookie=Yes';
+			var prodRecommCartUrl = 'http://www.audible.com/adbl/site/shop/cart.jsp?addItem=$!prod_id!$&loomia_rx=1&rcItem=$!prod_id!$&fromScript=/site/homepage/home.jsp&params=productID~$!prod_id!$&BV_UseBVCookie=Yes';
+			var prodBSCartUrl = 'http://www.audible.com/adbl/site/shop/cart.jsp?addItem=$!prod_id!$&fromScript=/site/homepage/home.jsp&params=productID~$!prod_id!$&BV_UseBVCookie=Yes';
+			var prodDetailUrl = "";
+			var prodCartUrl = "";
+			//set vars for max Navs(section), tabs(chapter), pages(divs)
+			//start counting at 0
+			maxSection = 1;
+			maxdivs = 2;
+			maxChapter = 2;
+			maxSectionR = 1;
+			maxdivsR = 2;
+			maxChapterR = 0;
+			var hasRecomm = "";
+			var recommBestSellerList = "";
+			var fictionList = "";
+			var nonFictionList = "";
+			var visitor = "4557619";
+			var isALUser = "Y";
+		var httpRequestArray = new Array();
+		function checkHttpRequestComplete()
+		{
+				var bComplete = true;
+				for(var i=0;i<httpRequestArray.length;i++)
+				{
+					var httpRequest = httpRequestArray[i];
+		      if (httpRequest.readyState != 4 || httpRequest.status != 200)
+	      	{
+		        	bComplete = false;
+		        	break;
+	      	}
+				}
+				return bComplete;
+		}
+	function getXMLNodeValue(xmlObject, tagName)
+	{
+			var value = "";
+			var nodeList = xmlObject.getElementsByTagName(tagName);
+			if(nodeList!=null && nodeList.length>0)
+			{
+				if(nodeList[0]!=null)
+				{
+		    	var xmlNode = nodeList[0].firstChild;
+		    	if(xmlNode!=null && xmlNode.nodeValue!=null)
+		    	{
+		    		value = xmlNode.nodeValue;
+		    	}
+		    }
+		  }
+    	return value;
+	}
+		function getBaseURL()
+		{
+				var myURL = document.location.href;
+				var tempmyURL = myURL.substring(myURL.indexOf("//") + 2);
+				myURL = "http://" + tempmyURL.substring(0,tempmyURL.indexOf("/"));
+				return myURL;
+		}
+		function mainCall()
+		{
+			for (var m=0;m<=2;m++)
+			{
+				if(m == 0)
+				{document.getElementById('displayRecommHTML').innerHTML  = "<div style=\"display:block;text-align:center;background: #FFFFFF;width:390px;height:168px;padding-top: 40px;\">Loading ...</div>";
+					loadRecomm();
+				}
+				else if(m == 1)
+				{document.getElementById('displayFictionHTML').innerHTML  = "<div style=\"display:block;text-align:center;background: #FFFFFF;width:390px;height:168px;padding-top: 40px;\">Loading ...</div>";
+					loadFiction();
+				}
+			}
+		}
+		var httpRequest1 = null;
+		var httpRequest2 = null;
+		var httpRequest3 = null;
+		function loadRecomm()
+		{
+			if (!checkHttpRequestComplete())
+      {
+        	window.setTimeout("loadRecomm()",100);
+        	return;
+      }
+		//	var url = '/adbl/site/homepage/homeproc.jsp?prodList='+recommBestSellerList+'&visitor='+visitor+'&isALUser='+isALUser;
+		//jira -CS 90
+			var url = '/adbl/site/homepage/homeproc.jsp'+'?BV_UseBVCookie=Yes'+'&isALUser='+isALUser+'&visitor='+visitor +'&prodList='+recommBestSellerList;
+			if (window.ActiveXObject)
+	    {
+	        httpRequest1 = new ActiveXObject("Microsoft.XMLHTTP");
+	    }
+	    else if (window.XMLHttpRequest)
+	    {
+	        httpRequest1 = new XMLHttpRequest();
+	    }
+	    httpRequestArray[httpRequestArray.length] = httpRequest1;
+	    httpRequest1.open("GET", url, true);
+	    httpRequest1.onreadystatechange = function() { processRecommDetails("recomm",httpRequest1);} ;
+	    httpRequest1.send(null);
+		}
+		function loadFiction()
+		{
+			if (!checkHttpRequestComplete())
+      {
+        	window.setTimeout("loadFiction()",10);
+        	return;
+      }
+ 				//var url = '/adbl/site/homepage/homeproc.jsp?prodList='+fictionList+'&visitor='+visitor+'&isALUser='+isALUser;
+ 				//CS-90
+ 				  var url = '/adbl/site/homepage/homeproc.jsp'+'?BV_UseBVCookie=Yes'+'&visitor='+visitor+'&isALUser='+isALUser+'&prodList='+fictionList;
+			if (window.ActiveXObject)
+	    {
+	        httpRequest2 = new ActiveXObject("Microsoft.XMLHTTP");
+	    }
+	    else if (window.XMLHttpRequest)
+	    {
+	        httpRequest2 = new XMLHttpRequest();
+	    }
+	    httpRequestArray[httpRequestArray.length] = httpRequest2;
+	    httpRequest2.open("GET", url, true);
+	    httpRequest2.onreadystatechange = function() {processRecommDetails("fiction",httpRequest2);} ;
+	    httpRequest2.send(null);
+		}
+		function loadNonFiction()
+		{
+			if (!checkHttpRequestComplete())
+      {
+        	window.setTimeout("loadNonFiction()",100);
+        	return;
+      }
+		//	var url = '/adbl/site/homepage/homeproc.jsp?prodList='+nonFictionList+'&visitor='+visitor+'&isALUser='+isALUser;
+		//CS-90
+			var url = '/adbl/site/homepage/homeproc.jsp'+'?BV_UseBVCookie=Yes'+'&visitor='+visitor+'&isALUser='+isALUser + '&prodList='+nonFictionList;
+			if (window.ActiveXObject)
+	    {
+	        httpRequest3 = new ActiveXObject("Microsoft.XMLHTTP");
+	    }
+	    else if (window.XMLHttpRequest)
+	    {
+	        httpRequest3 = new XMLHttpRequest();
+	    }
+	    httpRequestArray[httpRequestArray.length] = httpRequest3;
+	    httpRequest3.open("GET", url, true);
+	    httpRequest3.onreadystatechange = function() {processRecommDetails("nonfiction",httpRequest3);} ;
+	    httpRequest3.send(null);
+		}
+	function processRecommDetails(listType, httpRequest)
+	{
+		if (httpRequest.readyState == 4)
+      {
+        if(httpRequest.status == 200)
+        {
+        	try{
+        	var recomm_ResponseXML = httpRequest.responseXML.getElementsByTagName("products")[0];
+        	var mainArray = null;
+        	if(null != recomm_ResponseXML.getElementsByTagName("product"))
+        	{
+        			mainArray = processProductXML(recomm_ResponseXML);
+        	}
+        	if(mainArray!=null)
+        	{
+	        	if(listType=="recomm")
+	        	{
+	        		var htmlRecomm = showDivs(mainArray);
+	        	  document.getElementById('displayRecommHTML').innerHTML = htmlRecomm;
+	        	}
+	        	else if(listType=="fiction")
+	        	{
+	        		var htmlFiction = showFictionDivs(0,25,mainArray);
+	        	  document.getElementById('displayFictionHTML').innerHTML = htmlFiction;
+	        	}
+	        	else if(listType=="nonfiction")
+	        	{
+	        		var htmlFiction2 = showFictionDivs(1,34,mainArray);
+	        		 document.getElementById('displayFictionHTML').innerHTML = htmlFiction2;
+	        	}
+        		jumpNews(0,0);jumpNews(0,1);pageLoadR();jumpNewsR(0,0);jumpNewsR(0,1);
+        	}
+        	//document.getElementById("chapter10").style.z-index=11;
+        }
+        	catch(e){
+        		document.getElementById('displayRecommHTML').innerHTML  = "<div style=\"display:block;text-align:center;background: #FFFFFF;width:390px;height:167px;padding-top: 40px;\">Currently not available</div>";
+        		document.getElementById('displayFictionHTML').innerHTML  = "<div style=\"display:block;text-align:center;background: #FFFFFF;width:390px;height:167px;padding-top: 40px;\">Currently not available</div>";
+        	}
+        }
+       }
+   }
+   function processProductXML(recomm_ResponseXML)
+   {
+				var mainArray = new Array();
+				var prodIDArr = new Array();
+      	var titleArr = new Array();
+      	var authorArr = new Array();
+      	var imgPathArr = new Array();
+      	var listPriceArr = new Array();
+      	var salePriceArr = new Array();
+      	var flagArr = new Array();
+      	var priceArray  = new Array();
+      	var creditArray = new Array();
+      	mainArray[0] = prodIDArr;
+      	mainArray[1] = titleArr;
+      	mainArray[2] = authorArr;
+      	mainArray[3] = imgPathArr;
+      	mainArray[4] = listPriceArr;
+      	mainArray[5] = salePriceArr	;
+      	mainArray[6] = flagArr;
+      	mainArray[7] = priceArray;
+      	mainArray[8] = creditArray;
+   		 var prod_length = (recomm_ResponseXML.getElementsByTagName("product")).length;
+				for(var i=0;i<prod_length;i++){
+				var reco_productXML  = recomm_ResponseXML.getElementsByTagName("product")[i];
+				var prodId = reco_productXML.getAttribute("id");
+				//array for product id's
+				prodIDArr[i] = prodId;
+				var prodFlag = reco_productXML.getAttribute("audibleSelect");
+				flagArr[i] = prodFlag;
+				var reco_title = getXMLNodeValue(reco_productXML,"title");
+				reco_title = reco_title.substring(0,19).concat("...");
+				//array for titles
+				titleArr[i] = reco_title;
+				if(null != recomm_ResponseXML.getElementsByTagName("authors")[i]){
+				var reco_authorXML = recomm_ResponseXML.getElementsByTagName("authors")[i];
+				for(var m=0; m<2; m++){
+				var author_val = reco_authorXML.getElementsByTagName("author")[m].firstChild;
+				if(author_val != null)
+				{
+				author_val = author_val.nodeValue;
+				author_val = author_val.substring(0,19).concat("...");
+					if(0 == m)
+					{
+						authorArr[i] = author_val;
+					}
+				}
+				else
+				{
+					author_val = "";
+					authorArr[i] = author_val;
+				}
+			}
+		}
+				var img_path = getXMLNodeValue(reco_productXML,"img_path");
+				//Array for Image path
+				imgPathArr[i] = img_path;
+				if(null != reco_productXML.getElementsByTagName("price")){
+				var reco_price =	reco_productXML.getElementsByTagName("price");
+				for(var n=0;n<reco_price.length;n++){
+				 var type_price = reco_price[n].getAttribute("type");
+				 var reco_price_value = reco_productXML.getElementsByTagName("price")[n].firstChild;
+				if(reco_price_value != null)
+				{
+					 reco_price_value = reco_price_value.nodeValue;
+					if(n ==0)
+						listPriceArr[i] = reco_price_value;
+					else
+						salePriceArr[i] = reco_price_value;
+				}
+				else
+					{
+						reco_price_value = "";
+						salePriceArr[i] = reco_price_value;
+					}
+					priceArray[i] = salePriceArr[i];
+				}
+			}
+				if(null != reco_productXML.getElementsByTagName("credit")){
+				//var reco_credit =	reco_productXML.getElementsByTagName("credit");
+				var reco_credit = getXMLNodeValue(reco_productXML,"credit");
+				creditArray[i] = reco_credit;
+			}
+			}
+			return mainArray;
+   }
+   //used for displaying recommendations and bestseller
+   function showDivs(mainArray)
+   {
+ 			var prodIDArr =     mainArray[0];
+			var titleArr  =    mainArray[1];
+			var authorArr =    mainArray[2];
+			var imgPathArr =   mainArray[3];
+			var listPriceArr = mainArray[4];
+			var salePriceArr = mainArray[5];
+			var flagArr =      mainArray[6];
+			var priceArray =   mainArray[7];
+			var creditArray =  mainArray[8];
+   		var playerIDCount = 4;
+			var mainStr="";
+			var nTotalTableWidth = 392;
+			var nTotalProdsDisplayed = 3;
+			if(prodIDArr != null && prodIDArr.length > 0)
+			{
+				var len = prodIDArr.length;
+				var nDivs = 2;
+				if(len / nTotalProdsDisplayed <= nDivs){
+					if(len / nTotalProdsDisplayed <= 1){
+						nDivs = 0;
+					}else if(len / nTotalProdsDisplayed <= 2){
+						nDivs = 1;
+					}else {
+						nDivs = (len / nTotalProdsDisplayed);
+					}
+				}
+				maxdivsR = nDivs;
+				showLowerNavsRecomm = buildlowerNavs(0);
+				max = (nDivs + 1) * 3;
+				for (var j=0;j<=nDivs;j++)
+				{
+					var divProdArr = new Array();
+					var divTitleArr = new Array();
+					var divAuthorArr = new Array();
+					var divImgPathArr = new Array();
+					var divPriceArray = new Array();
+					var divFlagArr = new Array();
+					var divPlayer_idArray = new Array();
+					var divCreditArr = new Array();
+					for(var k=0;k<nTotalProdsDisplayed;k++)
+					{
+						if(((nTotalProdsDisplayed*j)+k)<prodIDArr.length)
+						{
+							divProdArr[k] = prodIDArr[(nTotalProdsDisplayed*j)+k];
+							divTitleArr[k] = titleArr[(nTotalProdsDisplayed*j)+k];
+							divAuthorArr[k] = authorArr[(nTotalProdsDisplayed*j)+k];
+							divImgPathArr[k] = imgPathArr[(nTotalProdsDisplayed*j)+k];
+							divPriceArray[k] = priceArray[(nTotalProdsDisplayed*j)+k];
+							divCreditArr[k] = creditArray[(nTotalProdsDisplayed*j)+k];
+							divFlagArr[k] = flagArr[(nTotalProdsDisplayed*j)+k];
+							playerIDCount++;
+							divPlayer_idArray[k] = 	playerIDCount;
+						}
+					}
+				  var div_id = "p"+0+0+j; //jchap is 0
+					if(hasRecomm == 'Yes')
+					{
+						prodDetailUrl = prodRecommDetailUrl;
+						prodCartUrl = prodRecommCartUrl;
+					}
+					else
+						{
+							prodDetailUrl = prodBSDetailUrl;
+							prodCartUrl = prodBSCartUrl;
+						}
+					mainStr += createDiv(divProdArr,divTitleArr,divAuthorArr,divImgPathArr,divPriceArray,divFlagArr,div_id,divPlayer_idArray,divCreditArr);
+				}
+				 var headerImage  = document.getElementById('displayHeader').innerHTML;
+				if(headerImage == "<img src=\"/images/everest/site/recommendation/reghome/bestSellers.gif\" border=\"0\">")
+				{
+					ShowMoreRecomm = "<a href=\"/adbl/site/listOfLists/BestSellers/bestSellersList.jsp?BV_UseBVCookie=Yes\" style=\"color: rgb(211, 72, 3);\"><span class=\"titleOrange\">See More Best Sellers</span></a> ";
+				}
+				else
+					ShowMoreRecomm = "";
+				endDisplayElement = endDisplayElement.replace(/ShowMoreRecomm/,ShowMoreRecomm);
+				endDisplayElement = endDisplayElement.replace(/showLowerNavsRecomm/,showLowerNavsRecomm);
+				mainStr = startDisplayElement+mainStr+endDisplayElement;
+			}
+			return mainStr;
+   }
+  	//used for displaying the Fiction and non fiction
+ function showFictionDivs(chap,playerIdFiction,mainArray)
+	{
+			var prodIDArr =     mainArray[0];
+			var titleArr  =    mainArray[1];
+			var authorArr =    mainArray[2];
+			var imgPathArr =   mainArray[3];
+			var listPriceArr = mainArray[4];
+			var salePriceArr = mainArray[5];
+			var flagArr =      mainArray[6];
+			var priceArray =   mainArray[7];
+			var creditArray =  mainArray[8];
+			var playerIDCount = playerIdFiction;
+			var mainStr1="";
+			/*if(chap==0)
+			{
+				mainStr=document.getElementById('displayFictionHTML').innerHTML;
+			}*/
+			var nTotalTableWidth = 392;
+			var nTotalProdsDisplayed = 3;
+			if(prodIDArr != null && prodIDArr.length > 0)
+			{
+				var len = prodIDArr.length;
+				var nDivs = 2;
+				if(len / nTotalProdsDisplayed <= nDivs){
+					if(len / nTotalProdsDisplayed <= 1){
+						nDivs = 0;
+					}else if(len / nTotalProdsDisplayed <= 2){
+						nDivs = 1;
+					}else {
+						nDivs = (len / nTotalProdsDisplayed);
+					}
+				}
+				max = (nDivs + 1) * 3;
+				maxdivs = nDivs;
+			showLowerNavsFic = buildlowerNavsFiction(1);
+				var divstr="";
+				for (var j=0;j<=nDivs;j++)
+				{
+					var divProdArr = new Array();
+					var divTitleArr = new Array();
+					var divAuthorArr = new Array();
+					var divImgPathArr = new Array();
+					var divPriceArray = new Array();
+					var divFlagArr = new Array();
+					var divPlayer_idArray = new Array();
+					var divCreditArray = new Array();
+					for(var k=0;k<nTotalProdsDisplayed;k++)
+					{
+						if(((nTotalProdsDisplayed*j)+k)<prodIDArr.length)
+						{
+							divProdArr[k] = prodIDArr[(nTotalProdsDisplayed*j)+k];
+							divTitleArr[k] = titleArr[(nTotalProdsDisplayed*j)+k];
+							divAuthorArr[k] = authorArr[(nTotalProdsDisplayed*j)+k];
+							divImgPathArr[k] = imgPathArr[(nTotalProdsDisplayed*j)+k];
+							divPriceArray[k] = priceArray[(nTotalProdsDisplayed*j)+k];
+							divFlagArr[k] = flagArr[(nTotalProdsDisplayed*j)+k];
+							divCreditArray[k] = creditArray[(nTotalProdsDisplayed*j)+k];
+							playerIDCount++;
+							divPlayer_idArray[k] = 	playerIDCount;
+						}
+					}
+					playerIdFiction = playerIDCount;
+				  var div_id = 'p'+'1'+chap+j; //jchap is 0
+							prodDetailUrl = prodBSDetailUrl;
+							prodCartUrl = prodBSCartUrl;
+					divstr += createDiv(divProdArr,divTitleArr,divAuthorArr,divImgPathArr,divPriceArray,divFlagArr,div_id,divPlayer_idArray,divCreditArray);
+				}
+					var chap_id = '1'+chap;
+					var chapStyle = "display:none;z-index:11;";
+					//removed for mac
+					//if(chap==0)
+					//{
+							chapStyle = "display:block;";
+							//removed z index
+					//}
+					var outerDiv = displayChap('chapter'+chap_id,chapStyle);
+					endouterDivforFiction = endouterDivforFiction.replace(/showLowerNavsFic/,showLowerNavsFic);
+					mainStr1 += outerDiv+divstr+endouterDivforFiction;
+				//if(chap==0)
+				//{
+					mainStr1	+= "<div class=\"tabs_bottom_curve\"> "
+										+showLowerNavsFic
+										+"</div> "
+				//}
+			}
+			return mainStr1;
+   }
+		</script>
+		<script src="/js/recommMagic.js" type="text/javascript"></script>
+		<!-- added for sample player  --->
+		<script src="/audioplayer/writeFlash.js" type="text/javascript"></script>
+		<style>
+				DIV.tabs_bottom_curve {
+					BACKGROUND: url(/images/everest/layout/tabs_bottom_curve.gif) no-repeat; WIDTH: 392px; HEIGHT: 23px; TEXT-ALIGN: center
+				}
+				DIV.tabs_bottom_curve IMG {
+					DISPLAY: block; VERTICAL-ALIGN: text-bottom
+				}
+				.chapter DIV {
+					DISPLAY: none; MARGIN-LEFT: 6px; OVERFLOW: hidden; PADDING-TOP: 5px; HEIGHT: 155px
+				}
+				.chapter {
+					BACKGROUND: url(/images/everest/layout/tabs_content_bg_tile.gif) repeat-y; WIDTH: 392px; HEIGHT: 185px
+				}
+				.pageMenu A.r0 {
+					FONT-SIZE:12pt; FONT-WEIGHT: bold; COLOR: #808080; TEXT-DECORATION: none
+				}
+				.pageMenu A.r1 {
+					FONT-SIZE:12pt; FONT-WEIGHT: bold; COLOR: #000000; TEXT-DECORATION: none
+				}
+			 TABLE.tabs TD.left_off {
+			Z-INDEX: 100; BACKGROUND: url(/images/everest/site/recommendation/reghome/new_fiction_off.gif) no-repeat left top; WIDTH: 124px; POSITION: relative
+		}
+		TABLE.tabs TD.left_on {
+			Z-INDEX: 100; BACKGROUND: url(/images/everest/site/recommendation/reghome/new_fiction_on.gif) no-repeat left top; WIDTH: 124px; POSITION: relative
+		}
+		TABLE.tabs TD.mid_off {
+			 Z-INDEX: 100; BACKGROUND: url(/images/everest/site/recommendation/reghome/new_nonfiction_off.gif) no-repeat left top; WIDTH: 150px; POSITION: relative;
+       }
+       TABLE.tabs TD.mid_on {
+           Z-INDEX: 100; BACKGROUND: url(/images/everest/site/recommendation/reghome/new_nonfiction_on.gif) no-repeat left top; WIDTH: 150px; POSITION: relative
+       }
+       TABLE.tabs TD.right_off {
+           Z-INDEX: 100; BACKGROUND: url(/clear.gif) no-repeat left top; WIDTH: 98px; POSITION: relative
+       }
+       TABLE.tabs TD.right_on {
+           Z-INDEX: 100; BACKGROUND: url(/clear.gif) no-repeat left top; WIDTH: 98px; POSITION: relative
+       }
+		.pageMenu {
+          MARGIN-RIGHT:0.5px
+         }
+    	#expandable_label LI.left {
+			width:164px;
+      }
+     #left_column, #mid_column, #right_column ,#left_column_pad15{
+	   padding-top : 15px;
+	   height: 935px
+     }
+      TABLE.notdpadding TD {
+      	padding: 0;
+      	margin: 0;
+      }
+		</style>
+				<script>
+						function writeSideNewsNav(whichNav, side){
+							// if there is more than one news section
+							if (maxdivs > 0) {
+								var imgSwitch;
+								var anchor;
+								if(side == 'left') {
+									arrow ="<a href='javascript://' onclick='page(-1," + whichNav + ")'><img src='/images/everest/site/recommendation/reghome/left_arrow.gif' border='0' alt='previous'></a>";
+								}else{
+									arrow ="<a href='javascript://' section='" + whichNav+ "' onclick='page(1,"+ whichNav +")'><img border='0' src='/images/everest/site/recommendation/reghome/right_arrow.gif' alt='next'></a>"
+								}
+								//output the nav
+								document.write(arrow);
+							}
+						}
+						function writeDummyNewsNav(whichNav){
+							// if there is more than one news section
+							if (maxdivs > 0) {
+								var imgSwitch;
+								var anchor;
+								document.write(buildSideLinks(0,whichNav));
+							}
+						}
+						function buildSideLinks(state,whichNav) {
+							var Menu = "";
+							// count # of news sections
+								for ( var count=0 ; count <= maxdivs ; count++) {
+									displayLink = count +1;
+									// write a dot and a link for each one
+									Menu = Menu +
+											"<span class='pageMenu'><a  href='###' class='r0' id='a" + whichNav + count  +
+											"' onclick='jumpNews(" + count + "," + whichNav +
+											");this.blur();'>&bull;</a></span>"
+								}
+								return Menu
+						}
+					 function writeSideNewsNavR(whichNav, side){
+							// if there is more than one news section
+							if (maxdivsR > 0) {
+								var imgSwitch;
+								var anchor;
+								if(side == 'left') {
+									arrow ="<a href='javascript://' onclick='pageR(-1," + whichNav + ")'><img src='/images/everest/site/recommendation/reghome/left_arrow.gif' border='0' alt='previous' ></a>";
+								}else{
+									arrow ="<a href='javascript://' section='" + whichNav+ "' onclick='pageR(1,"+ whichNav +")'><img border='0' src='/images/everest/site/recommendation/reghome/right_arrow.gif' alt='next' ></a>"
+								}
+								//output the nav
+								document.write(arrow);
+							}
+						}
+						function writeDummyNewsNavR(whichNav){
+							// if there is more than one news section
+							if (maxdivsR > 0) {
+								var imgSwitch;
+								var anchor;
+								document.write(buildSideLinksR(0,whichNav));
+							}
+						}
+						</script>
+		<script type="text/javascript">
+		var ap_instances = new Array();
+		function ap_stopAll(playerID) {
+			for(var i = 0;i<ap_instances.length;i++) {
+			try {
+				if(ap_instances[i] != playerID) {
+					document.getElementById("audioplayer" + ap_instances[i].toString()).SetVariable("closePlayer", 1);
+				} else {
+					document.getElementById("audioplayer" + ap_instances[i].toString()).SetVariable("closePlayer", 0);
+				}
+			} catch( errorObject ) {
+			// stop any errors
+			}
+			}
+		}
+		function ap_registerPlayers() {
+			var objectID;
+			var objectTags = document.getElementsByTagName("object");
+			for(var i=0;i<objectTags.length;i++) {
+				objectID = objectTags[i].id;
+				if(objectID.indexOf("audioplayer") == 0) {
+					ap_instances[i] = objectID.substring(11, objectID.length);
+				}
+			}
+		}
+		var ap_clearID = setInterval( ap_registerPlayers, 1000 );
+		</script>
+		<!----  till here ----->
+	<script src="/js/mbox.js"  language="JavaScript1.2"></script>
+	</head>
+		<!--
+		onLoad = call jumpNews() once for each time the DHTML menu appears on the page.
+				Increment the second arg to match instance.
+	 -->
+	<body>
+   	<div class="mboxDefault">
+   </div>
+   <script language="JavaScript1.2">
+    mboxCreate('RegHomeRetrofit');
+   </script>		
+		<div id="contentContainer">
+<script src="/js/mbox.js"  language="JavaScript1.2"></script>
+<div id="travNav"><a href=javascript:linkURL('/site/template/int/landing.jsp','&pac=Best+of+2008')><img src="/images/everest/promo/bottom/2008/120208_TravNav_Best2008.jpg" alt="Best of 2008: Editors&#0146; Picks and Customer Favorites" title="Best of 2008: Editors&#0146; Picks and Customer Favorites" /></a></div>
+<div id="adblSite">
+	<div id="adblTopNav">
+		<div id="skipNav"><a href="#skipnav"><img src=/clear.gif alt= "Skip to Main Content"></a></div>
+		<div id="logo">
+			<a href="http://www.audible.com/adbl/site/homepage/home.jsp?state=0&BV_UseBVCookie=Yes"><img  src="/images/everest/logos/audibledotcom.gif"
+				alt="Audible.com - audio that speaks to you wherever you are" class="inline" /></a>
+		</div>
+		<div id="loginArea">
+			<form id="div_loginForm">
+			<div id="div_loginHello">Hello, nosbtr1</div>
+			<div id="div_alInfo">
+			<div id="div_alStatus"><a href="https://www.audible.com/adbl/site/myAccountMain.jsp?BV_UseBVCookie=Yes">AudibleListener PremiumListener</a></div>
+			<div id="div_creditInfo"><a href="https://www.audible.com/adbl/site/myAccountMain.jsp?BV_UseBVCookie=Yes">Credits:</a> 0</div>
+		</div>
+		<div id="div_acctLinks">
+			<div id="div_logoutButn"><a href="http://www.audible.com/adbl/store/logOut.jsp?BV_UseBVCookie=Yes">Log Out</a></div>
+			<div id="div_accountButn"><a href="https://www.audible.com/adbl/site/myAccountMain.jsp?BV_UseBVCookie=Yes">Account Details</a></div>
+		</div>
+		<div id="div_couponInfo">
+		</div>
+		</form>
+		</div>
+		<div id="div_utilLinks">
+			<ul id="ul_utilLinks">
+				<li id="li_utilLink3" class="li_utilLink"><a href="http://www.audible.com/adbl/site/GC/GiftCertificates.jsp?BV_UseBVCookie=Yes">Gift Certificates</a></li>
+				<li id="li_utilLink3" class="li_utilLink"><a href="http://www.audible.com/adbl/site/GC/GiftCenterHome.jsp?BV_UseBVCookie=Yes">Buy & Redeem Gifts</a></li>
+				<li id="li_utilLink4" class="li_utilLink"><a href="http://www.audible.com/adbl/store/deviceCenter.jsp?BV_UseBVCookie=Yes">Device Center</a></li>
+				<li id="li_utilLink5" class="li_utilLink"><a href="http://www.audible.com/adbl/faqs/index.jsp?BV_UseBVCookie=Yes">Help</a></li>
+			</ul>
+		</div>
+		<div id="div_mainLinks">
+			<ul id="ul_mainLinks">
+					<li id="li_mainLink1" class="li_mainLinkSelected"><a href="http://www.audible.com/adbl/site/homepage/home.jsp?BV_UseBVCookie=Yes">Home</a></li>
+					<li id="li_mainLink2" class="li_mainLink"><a href="http://www.audible.com/adbl/site/mylibrary/library.jsp?BV_UseBVCookie=Yes">My Library</a></li>
+					<li id="li_mainLink3" class="li_mainLink"><a href="http://www.audible.com/adbl/site/nextListen/nextListen.jsp?BV_UseBVCookie=Yes">My Next Listen</a></li>
+					<li id="li_mainLink4" class="li_mainLink"><a href="http://www.audible.com/adbl/site/wishList/wishList.jsp?BV_UseBVCookie=Yes">Wish List</a></li>
+					<li id="li_mainLink5" class="li_mainLink"><a href="http://www.audible.com/adbl/site/memberAudio/memberAudio.jsp?BV_UseBVCookie=Yes">Member Audio</a></li>
+					<li id="li_mainLink6" class="li_mainLink"><a href="http://kids.audible.com/adkd/store/welcome.jsp?source_code=AUDK4335WS112107&entryRedirect=/site/k/homepageGuest.jsp" target="_blank">AudibleKids</a></li>
+			</ul>
+		</div>
+		<div id="div_shopCart">
+			<div id="div_shopCartTitle"><img src=/images/everest/layout/hdr_cart_empty.gif alt="Cart" width="58" height="22"></div>
+			<div id="div_shopCartItems">
+				(Your cart is currently empty)
+			</div>
+			<div id="div_shopCartDetail"><a href="http://www.audible.com/adbl/site/shop/cart.jsp?BV_UseBVCookie=Yes">View Cart</a></div>
+		</div>
+		<div id="div_secdryLinks">
+			<ul id="ul_secdryLinks">&nbsp;
+				<li id="li_secdryLink1" class="li_secdryLink"><a href="http://www.audible.com/adbl/site/listOfLists/NewReleases/newReleases.jsp?BV_UseBVCookie=Yes">New Releases</a></li>Y
+				<li id="li_secdryLink2" class="li_secdryLink"><a href="http://www.audible.com/adbl/site/listOfLists/BestSellers/bestSellersList.jsp?BV_UseBVCookie=Yes">Best Sellers</a></li>
+				<li id="li_secdryLink3" class="li_secdryLink"><a href="http://www.audible.com/adbl/site/listOfLists/AwardWinners/awardWinners.jsp?BV_UseBVCookie=Yes">Award Winners</a></li>
+				<li id="li_secdryLink4" class="li_secdryLink"><a href="http://www.audible.com/adbl/site/listOfLists/JustAdded/justAdded.jsp?BV_UseBVCookie=Yes">Just Added</a></li>
+				<li id="li_secdryLink5" class="li_secdryLink"><a href="http://www.audible.com/adbl/site/listOfLists/ListOfLists.jsp?BV_UseBVCookie=Yes">The List of Lists</a></li>
+			</ul>
+		</div>
+	</div>
+			<table border=0 id="content_columns" cellspacing="0">
+			<tr>
+					<td id="left_column"><div id="adblLftNav">
+		<div class="hdr_search">
+			<img src="/images/everest/site/search/search_products.gif" width=172 height="20" alt="Search Products"  style="vertical-align:bottom" />
+		</div>
+		<div id="div_search_top">
+			<div id="div_mainSearchArea">
+			<form name="basicSearchForm" action="http://www.audible.com/adbl/site/enSearch/searchResults.jsp" method="get" class="search_top" onSubmit="return searchSubmit(); ">
+				<!-- <h4>All Products</h4> -->
+				<input type=hidden name='BV_UseBVCookie' value='Yes'>
+				<input type="hidden" name="N"   value="0">
+				<input type="hidden" name="Ntx" value="mode+matchallpartial">
+				<input type="hidden" name="D"   value="">
+				<input type="hidden" name="Dx"  value="mode+matchallpartial">
+				<span style="color:white">BY: </span>
+				<select name="Ntk" class="short">
+					<option value="S_Keywords">Keyword</option>
+					<option value="S_Author">Author</option>
+					<option value="S_Title">Title</option>
+					<option value="S_Narrator">Narrator</option>
+				</select>
+				<input class="keyWordSearchAnon" type="text" name="Ntt" size="20" maxlength="50"  />
+				<input type="image" src="/images/everest/site/anon_homepage/2006/update_0301/go_search.gif" alt="Go" class="btn_go" style="vertical-align:bottom" />
+				<p><a href="http://www.audible.com/adbl/site/enSearch/advSearch.jsp?BV_UseBVCookie=Yes">Advanced Search</a></p>
+			</form>
+			</div>
+		</div>
+<div id="adblLftNavItems">
+<script>
+function linkURL(a,b)
+{
+		if(b)
+	 				self.location.href = 'http://www.audible.com' + '/adbl' + a + '?BV_UseBVCookie=Yes' + b;
+			else
+					self.location.href = 'http://www.audible.com' + '/adbl' + a + '?BV_UseBVCookie=Yes';
+}
+</script>
+		<div id="div_adSlot1" class="leftNavComponent"><a href="javascript:linkURL('/site/products/ProductDetail.jsp','&productID=BK_BRLL_000630')"><div style="padding: 5px 8px 5px 8px;"><img src="/images/everest/promo/2008/BAU4070_koontz/BAU4070_koontz_leftnav.jpg" alt="New DEAN KOONTZ $9.95 Member Exclusive" style="display: inline"></div></a></div>
+		<div id="div_adSlot2" class="leftNavComponent"></div>
+		<div id="div_catList" class="leftNavComponent">
+						<h2 class="h1_catListTitle">Browse & Discover</h2>
+						<!--<h3 class="h1_catListSubTitle">Audiobooks</h3>  -->
+						<!--<h3 class="h1_catListSubTitle">Audio Entertainment</h3>  -->
+						<!--<h3 class="h1_catListSubTitle">Audible Originals</h3>  -->
+						<!--<h3 class="h1_catListSubTitle">Special Features</h3>  -->
+			<h3 class='h1_catListSubTitle'>Audiobooks</h3><ul id='ul_catList'>	<li><a onClick="s_objectID='-8029'" href='http://www.audible.com/adbl/site/audibleSearch/category.jsp?N=224&oid=-8029&BV_UseBVCookie=Yes'>Business</a></li>	<li><a onClick="s_objectID='-17019'" href='http://www.audible.com/adbl/site/audibleSearch/category.jsp?N=47&oid=-17019&BV_UseBVCookie=Yes'>Classics</a></li><li><a href=javascript:linkURL('/site/education/educationHome.jsp')>Education</a></li>	<li><a onClick="s_objectID='-35772'" href='http://www.audible.com/adbl/site/audibleSearch/category.jsp?N=1447&oid=-35772&BV_UseBVCookie=Yes'>Erotica & Sexuality</a></li>	<li><a onClick="s_objectID='-8009'" href='http://www.audible.com/adbl/site/audibleSearch/category.jsp?N=46&oid=-8009&BV_UseBVCookie=Yes'>Fiction</a></li>	<li><a onClick="s_objectID='-8037'" href='http://www.audible.com/adbl/site/audibleSearch/category.jsp?N=166&oid=-8037&BV_UseBVCookie=Yes'>History</a></li>	<li><a onClick="s_objectID='-8094'" href='http://www.audible.com/adbl/site/audibleSearch/category.jsp?N=1460&oid=-8094&BV_UseBVCookie=Yes'>Kids & Young Adults</a></li>	<li><a onClick="s_objectID='-8053'" href='http://www.audible.com/adbl/site/audibleSearch/category.jsp?N=244&oid=-8053&BV_UseBVCookie=Yes'>Mysteries & Thrillers</a></li>	<li><a onClick="s_objectID='-24741'" href='http://www.audible.com/adbl/site/audibleSearch/category.jsp?N=294&oid=-24741&BV_UseBVCookie=Yes'>Romance</a></li>	<li><a onClick="s_objectID='-16468'" href='http://www.audible.com/adbl/site/audibleSearch/category.jsp?N=266&oid=-16468&BV_UseBVCookie=Yes'>Sci-Fi & Fantasy</a></li>	<li><a onClick="s_objectID='-8023'" href='http://www.audible.com/adbl/site/audibleSearch/category.jsp?N=204&oid=-8023&BV_UseBVCookie=Yes'>Self Development</a></li><li><a onClick="s_objectID='See All Categories'" href=javascript:linkURL('/site/viewAllCategories.jsp')>More Categories</a></li> </ul><h3 class='h1_catListSubTitle'>Audio Entertainment</h3><ul id='ul_catList'>	<li><a onClick="s_objectID='-8085'" href='http://www.audible.com/adbl/site/audibleSearch/category.jsp?N=126&oid=-8085&BV_UseBVCookie=Yes'>Arts & Entertainment</a></li>	<li><a onClick="s_objectID='-8097'" href='http://www.audible.com/adbl/site/audibleSearch/category.jsp?N=150&oid=-8097&BV_UseBVCookie=Yes'>Comedy</a></li>	<li><a onClick="s_objectID='-26610'" href='http://www.audible.com/adbl/site/audibleSearch/category.jsp?N=467&oid=-26610&BV_UseBVCookie=Yes'>Newspapers & Magazines</a></li>	<li><a onClick="s_objectID='-35811'" href='http://www.audible.com/adbl/site/audibleSearch/category.jsp?N=1476&oid=-35811&BV_UseBVCookie=Yes'>Nostalgia Radio</a></li>	<li><a onClick="s_objectID='-26615'" href='http://www.audible.com/adbl/site/audibleSearch/category.jsp?N=340&oid=-26615&BV_UseBVCookie=Yes'>Radio & TV</a></li><li><a onClick="s_objectID='Podcasts'" href="/adbl/site/audibleSearch/podcasts.jsp?BV_UseBVCookie=Yes">Podcasts</a></li> </ul><h3 class='h1_catListSubTitle'>Audible Originals</h3><ul id='ul_catList'><li><a onClick="s_objectID='Audible Frontiers'" href=javascript:linkURL('/site/template/int/landing.jsp','&pac=Audible+Frontiers')>Audible Frontiers</a></li> <li><a onClick="s_objectID='Audible IndieFirst'" href=javascript:linkURL('/site/template/int/landing.jsp','&pac=IndieFirst')>Audible IndieFirst</a></li><li><a onClick="s_objectID='Audible Originals'" href=javascript:linkURL('/site/template/int/landing.jsp','&pac=AudibleOriginals')>Audible Premieres</a></li> <li><a onClick="s_objectID='Harlequin Romance'" href=javascript:linkURL('/site/template/int/landing.jsp','&pac=Harlequin')>Harlequin Romance</a></li> <li><a onClick="s_objectID='In Bed With Susie Bright'" href=javascript:linkURL('/site/template/int/landing.jsp','&pac=In+Bed+with+Susie+Bright')>In Bed with Susie Bright</a></li> </ul><h3 class='h1_catListSubTitle'>Special Features</h3><ul id='ul_catList'><li><a onClick="s_objectID='AudibleEssentials'" href=javascript:linkURL('/site/template/ert/landing.jsp','&page=Audible+Essential')>AudibleEssentials</a></li><li><a onClick="s_objectID='Audie Awards 2008'" href=javascript:linkURL('/site/template/int/landing.jsp','&pac=Audie+Awards+2008')>Audie Awards 2008</a></li><li><a onClick="s_objectID='Audiobooks en Espanol'" href=javascript:linkURL('/site/template/int/landing.jsp','&pac=Audiobooks+en+Espanol')>Audiobooks en Español</a></li> <li><a onClick="s_objectID='Best of 2008'" href=javascript:linkURL('/site/template/int/landing.jsp','&pac=Best+of+2008')>Best of 2008</a></li><li><a onClick="s_objectID='Breakout Thrillers'" href=javascript:linkURL('/site/template/int/landing.jsp','&pac=Breakout+Thrillers')>Breakout Thrillers</a></li><li><a onClick="s_objectID='Coming Soon'" href=javascript:linkURL('/site/template/int/landing.jsp','&pac=Coming+Soon')>Coming Soon</a></li> <li><a onClick="s_objectID='Great First Listens'" href=javascript:linkURL('/site/template/mylisten/landing.jsp','&pac=Default')>Great First Listens</a></li><li><a onClick="s_objectID='Holiday Favorites'" href=javascript:linkURL('/site/template/int/landing.jsp','&pac=Holiday+Favorites')>Holiday Favorites</a></li><li><a onClick="s_objectID='Oprahs Book Club Selections'" href=javascript:linkURL('/site/template/int/landing.jsp','&pac=Oprah+Book+Club')>Oprah's Book Club Selections</a></li><li><a onClick="s_objectID='Featured Narrators'" href=javascript:linkURL('/site/template/int/landing.jsp','&pac=Our+Best+Narrators')>Featured Narrators</a></li> <li><a onClick="s_objectID='More to Explore'" href=javascript:linkURL('/site/template/int/landing.jsp','&pac=More+to+Explore')>More to Explore</a></li></ul>
+		</div>
+		<div id="div_adSlot3" class="leftNavComponent"><a href="javascript:linkURL('/site/giftCenter/giftCenterMain.jsp')"><div style="padding: 5px 8px 5px 8px;"><img src="/images/everest/emails/2008/EMAIL_768_SmartGift/CRE_637_SmartGift145X100_01.jpg" alt="Gifts That Are Smart and Thoughtful" style="display: inline"></div></a></div>
+		<div id="div_adSlot4" class="leftNavComponent"></div>
+</div>
+</div>
+</td>
+					<td id="mid_column"><a name="skipnav"></a>
+<!-- Generic Content Box Component  -->
+    				<script>
+    					fictionList = "'BK_AREN_000863','BK_BRLL_000630','BK_HARP_001768','BK_BOLI_000570','BK_BRLL_001459','BK_RAND_001680','BK_SANS_001591','BK_HARL_000270','BK_BBCA_000268','BK_BLAK_002893','BK_ADBL_000300','BK_ADBL_000573','BK_BOLI_000565','BK_BBCA_000263','BK_BBCA_000264','BK_RAND_001674','BK_BBCA_000265','BK_BBCA_000267','BK_SANS_001596','BK_HCUK_000388','BK_RECO_002679','BK_ADBL_000292','BK_WNDR_000021','BK_RAND_001621','BK_SANS_001594','BK_TANT_000819','BK_HARP_001761'";
+    					nonFictionList = "'BK_BKOT_001146','BK_RECO_002771','BK_HACH_000187','BK_BLAK_002894','BK_TANT_000847','PE_SCAM_081201a','BK_HIGH_000453','BK_TANT_000843','BK_HIGH_000446','BK_HIGH_000449','BK_RAND_001683','BK_RECO_002726','BK_BLAK_002868','PF_HARP_001764','BK_RAND_001675','BK_BRLL_001452','BK_RECO_002722','BK_BLAK_002833','BK_SANS_001624','BK_BBCA_000229','BK_SANS_001555','BK_BLAK_002852','BK_ADBL_000633','BK_TANT_000818','BK_RAND_001618'";
+    				</script>
+						  <script>
+						  recommBestSellerList = "'BK_BOLI_000362','BK_AREN_000779','BK_BLAK_000030','BK_RECO_001024','RT_ARWT_000015','BK_BLAK_000115','RT_RFMA_000033','BK_RAND_000685','SP_JART_000001','BK_TANT_000585','BK_RECO_000610','PF_SHOU_000005','BK_BLAK_000940','RT_ARWT_000037','BK_BLAK_001572','RT_TBON_061129','BK_BLAK_000487','BK_SANS_001223','PF_JULI_000001'";
+						  hasRecomm = "Yes";
+						  </script>
+<table cellspacing="0" class="small_box">
+  <tr>
+    <td><div id="expandable_label">
+        <ul>
+          <li class="left">
+  				<div><span class="titleGray">Cutting-Edge</span> <span class="titleOrange">Company</span></div>
+          </li>
+        </ul>
+      </div></td>
+  </tr>
+  			<tr><td class="right_drop_shadow">
+  			     <center><p class="thumb"><table><tr><td style="text-align:center;"><a href=http://www.audible.com/adbl/site/products/ProductDetail.jsp?productID=BK_TANT_000848&BV_UseBVCookie=Yes title="The Pixar Touch: The Making of a Company (Unabridged)" alt="The Pixar Touch: The Making of a Company (Unabridged)"><img src='/audiblewords/content/bk/tant/000848/med_image.jpg'  alt="The Pixar Touch: The Making of a Company (Unabridged)" - $9.95 Special border=0 class=inline></a></td></tr>
+  			     	 <tr><td class="titleOrange" style="text-align:center; padding-left:4px; padding-right:4px; font-size:15px; font-weight:bold; padding-bottom:2px;"><a href=http://www.audible.com/adbl/site/products/ProductDetail.jsp?productID=BK_TANT_000848&BV_UseBVCookie=Yes title="The Pixar Touch: The Making of a Company (Unabridged)" alt="The Pixar Touch: The Making of a Company (Unabridged)"><span style="font-size:11px; font-weight:bold;">The Pixar Touch: The Making of a Company (Unabridged)</span></a></td></tr>
+  			     	 	<tr><td style="text-align:center; padding-left:4px; padding-right:4px; padding-top:2px;"><font style="font-size:11px;">David A. Price</font></td></tr>
+               <!--br>Reg Price <strike>$24.99</strike><br /-->
+  			     	  <tr><td style="text-align:center; "><span class='titleOrange'><b>GET IT FOR $17.49</b></span><img src="/clear.gif" height=3></td></tr></table>
+			  			<table>
+			    	      <tr>
+			    	      	<td width=3></td>
+			    	        <td>
+			    	        	<table border=0><tr><td style="padding-left:6px">     
+				    	        		 <SCRIPT language="JavaScript">
+													      writeFlash("/audioplayer/soundplayerAltered.swf","40","12", { name:"audioplayer1",quality:"high",wmode:"transparent",salign:"TL"},{ playerID:"1",soundFile:"http://audible.edgeboss.net/download/audible/content/bk/tant/000848/bk_tant_000848_sample.mp3",rightbg:"0x9dbb41",leftbg:"0x9dbb41",bg:"0xeefac8",lefticon:"0xffffff",righticon:"0xffffff",border:"0x000000",slider:"0x9dbb41"});
+									         </SCRIPT></td><td><a href=https://www.audible.com/adbl/site/shop/cart.jsp?addItem=BK_TANT_000848&fromScript=/site/homepage/home.jsp&params=productID~BK_TANT_000848&BV_UseBVCookie=Yes> 
+									         		<img src=/images/everest/site/recommendation/prod_detail/add_button.gif style="display: inline" border="0" alt="Add to Cart">					
+									         		</a></td></tr></table>
+									             </td><td width=5>&nbsp;</td>
+									 </tr>
+							</table></p>
+  			    </center>
+         </td></tr>
+			  <tr>
+			  <td><img src="/images/everest/layout/box_177_bottom_bg.gif" alt="" /></td>
+			  </tr>
+			</table>
+<br />
+  <table cellspacing="0" class="small_box">
+  <tr>
+    <td><div id="expandable_label">
+        <ul>
+          <li class="left">
+  				<div><span class="titleGray">Grammy</span> <span class="titleOrange">Nominees</span></div>
+          </li>
+        </ul>
+      </div></td>
+  </tr>
+  			<tr><td class="right_drop_shadow">
+  			     <center><p class="thumb"><a href=http://www.audible.com/adbl/site/products/ProductDetail.jsp?productID=BK_SANS_001017&BV_UseBVCookie=Yes title="Born Standing Up: A Comic&#039;s Life (Unabridged)" alt="Born Standing Up: A Comic&#039;s Life (Unabridged)"><img src='/audiblewords/content/bk/sans/001017/med_image.jpg'  alt="Born Standing Up: A Comic&#039;s Life (Unabridged)" - $9.95 Special border=0 class=inline><br><br>
+  			     	 <font style="font-size:11px; font-weight:bold; padding-left:4px; padding-right:4px;">Born Standing Up: A Comic's Life (Unabridged)</font></a><br><font style="font-size:11px; padding-left:4px; padding-right:4px;">Steve Martin</font>
+               <br><br><font style="font-size:11px; font-weight:bold;">$20.97</font><br />
+			  			<table border=0>
+			    	      <tr>
+			    	      	<td width=3 style="padding-top:3px"></td>
+			    	        <td>
+			    	        		<table border=0 width=100%><tr><td style="padding-left:2px">     
+				    	        		 <SCRIPT language="JavaScript">
+													      writeFlash("/audioplayer/soundplayerAltered.swf","40","12", { name:"audioplayer2",quality:"high",wmode:"transparent",salign:"TL"},{ playerID:"2",soundFile:"http://audible.edgeboss.net/download/audible/content/bk/sans/001017/bk_sans_001017_sample.mp3",rightbg:"0x9dbb41",leftbg:"0x9dbb41",bg:"0xeefac8",lefticon:"0xffffff",righticon:"0xffffff",border:"0x000000",slider:"0x9dbb41"});
+									         </SCRIPT></td><td><a href=https://www.audible.com/adbl/site/shop/cart.jsp?addItem=BK_SANS_001017&fromScript=/site/homepage/home.jsp&params=productID~BK_SANS_001017&BV_UseBVCookie=Yes> 
+									         	<img src=/images/everest/site/recommendation/prod_detail/add_button.gif style="display: inline" border="0" alt="Add to Cart" >
+												</a></td></tr></table>
+									             </td><td width=5>&nbsp;</td>
+									 </tr>
+							</table><br>
+							<table><tr><td width=3></td><td style="padding-left:2px">Steve Martin's wild-and-crazy trip through life and career has just been nominated for a Grammy in the spoken-word category.<br><br><center><b><a href=javascript:linkURL('/site/listOfLists/List/subList.jsp','&strContentType=BEST_PICKS&strCategory=/Merchandising+Lists/2008+Grammy+Nominees')>SEE ALL NOMINEES</a></center></b></td><td width=3>&nbsp;</td></tr></table>
+  			    </center></a><br></p>
+         </td></tr>
+			  <tr>
+			  <td><img src="/images/everest/layout/box_177_bottom_bg.gif" alt="" /></td>
+			  </tr>
+			</table>
+    <br />
+	  <table cellspacing="0" class="small_box">
+  <tr>
+  <td><div id="expandable_label">
+        <ul>
+          <li class="left">
+  				<div><span class="titleGray">Today's</span> <span class="titleOrange">Top Downloads</span></div>
+          </li>
+        </ul>
+      </div></td>
+  </tr>
+	<tr><td class="right_drop_shadow"><center><br /><table border=0 width='100%'>
+            <tr><td>&nbsp;1.</td><td style="padding-left:5px;padding-right:14px;"><a href=http://www.audible.com/adbl/site/products/ProductDetail.jsp?productID=BK_BRLL_000630&BV_UseBVCookie=Yes ><b>Your Heart Belongs to Me (Unabridged)</b></a></td></tr>
+		        <tr><td></td><td style="padding-left:8px;padding-bottom:4px;font-size:9px;padding-right:14px;">Dean Koontz</td></tr>
+            <tr><td>&nbsp;2.</td><td style="padding-left:5px;padding-right:14px;"><a href=http://www.audible.com/adbl/site/products/ProductDetail.jsp?productID=BK_HACH_000187&BV_UseBVCookie=Yes ><b>Outliers: The Story of Success (Unabridged)</b></a></td></tr>
+		        <tr><td></td><td style="padding-left:8px;padding-bottom:4px;font-size:9px;padding-right:14px;">Malcolm Gladwell</td></tr>
+            <tr><td>&nbsp;3.</td><td style="padding-left:5px;padding-right:14px;"><a href=http://www.audible.com/adbl/site/products/ProductDetail.jsp?productID=BK_BKOT_001123&BV_UseBVCookie=Yes ><b>The Girl with the Dragon Tattoo (Unabridged)</b></a></td></tr>
+		        <tr><td></td><td style="padding-left:8px;padding-bottom:4px;font-size:9px;padding-right:14px;">Stieg Larsson</td></tr>
+            <tr><td>&nbsp;4.</td><td style="padding-left:5px;padding-right:14px;"><a href=http://www.audible.com/adbl/site/products/ProductDetail.jsp?productID=BK_LILI_000265&BV_UseBVCookie=Yes ><b>Twilight: The Twilight Saga, Book 1 (Unabridged)</b></a></td></tr>
+		        <tr><td></td><td style="padding-left:8px;padding-bottom:4px;font-size:9px;padding-right:14px;">Stephenie Meyer</td></tr>
+            <tr><td>&nbsp;5.</td><td style="padding-left:5px;padding-right:14px;"><a href=http://www.audible.com/adbl/site/products/ProductDetail.jsp?productID=BK_HACH_000180&BV_UseBVCookie=Yes ><b>Divine Justice (Unabridged)</b></a></td></tr>
+		        <tr><td></td><td style="padding-left:8px;padding-bottom:4px;font-size:9px;padding-right:14px;">David Baldacci</td></tr>
+     </table>
+     </td></tr>
+			  <tr>
+			  <td><img src="/images/everest/layout/box_177_bottom_bg.gif" alt="" /></td>
+			  </tr>
+			</table>
+  </td>
+					<td id="right_column"><div class="promo">
+									<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="397" height="197" id="hp_member" align="middle">
+<param name="allowScriptAccess" value="sameDomain" />
+<param name="movie" value="http://www.audible.com/images/everest/flash/hp_member_usc_migration_offer/hp_member.swf?cat=http://www.audible.com/images/everest/flash/hp_member_usc_migration_offer/hp_member" />
+<param name="quality" value="high" /><param name="bgcolor" value="#b6cb64" />
+<embed src="http://www.audible.com/images/everest/flash/hp_member_usc_migration_offer/hp_member.swf?cat=http://www.audible.com/images/everest/flash/hp_member_usc_migration_offer/hp_member" width="397" height="197" autostart="false" quality="high" bgcolor="#b6cb64" name="hp_member" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+</object>
+					</div>
+		  				<br>
+<div class="tabContainer">  	
+<!--%=DisplayHTMLhead%-->
+<table class="tabs" cellspacing="0"><tbody><tr id="nav0"><td id="displayHeader"><img src='/images/everest/site/recommendation/reghome/recommend_topbeta.gif' border=0></td></tr></tbody></table>
+<span id="displayRecommHTML"></span>
+</div> 
+<div class="tabContainer">  	
+<!--%=DisplayHTMLhead1%-->
+<table style="BACKGROUND: url(/images/everest/site/recommendation/reghome/tabs_pod_top_curve.gif) no-repeat left bottom;" cellspacing=0 class="tabs"><tr id="nav1">  <td style="height:29px" class="left_curve">&nbsp;</td>  <td class="left_on"> <a href="###" onclick="showChapterFiction('10');hLink(this,'10');" onmouseover="hLink(this,'10');" onmouseout="hLink(this,'10');">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;</td> <td class="mid_off"> <a href="###" onclick="showChapterNew('11');hLink(this,'11');" onmouseover="hLink(this,'11');" onmouseout="hLink(this,'11');">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;</td> <td class="right_off">&nbsp;</td> <td><img src="/clear.gif" height="25" width="12"></td></tr></table>
+<span id="displayFictionHTML"></span>
+</div>
+						 <div class="trio_container"><!-- Open trio of green boxes -->
+	 <table>
+	 	<tr><td>
+			 <table border=0>
+			 	 <tr>
+			 		<td><a href=javascript:linkURL('/site/listOfLists/List/subList.jsp','&strContentType=BEST_PICKS&strCategory=/Merchandising+Lists/Jean+M.+Auel')><img src='/images/everest/promo/bottom/2008/120208_140x100_jean_auel.jpg' height=100 width=140 alt="Jean M. Auel: Earth&#0146;s Children Series" border=0></a></a></td>
+			 		<td><img src="/clear.gif" width=19></td>
+			 		<td><a href=javascript:linkURL('/site/template/int/landing.jsp','&pac=Holiday+Favorites')><img src='/images/everest/promo/bottom/2008/120208_230x100_holiday.jpg' height=100 width=230 alt="Holiday Favorites" border=0></a></a></td>
+			 	</tr>
+			 </table>
+		</td></tr>
+		<tr><td style="padding-top:10px">
+			 <table border=0>
+			 	 <tr>
+			 		<td><a href=javascript:linkURL('/store/product.jsp','&productID=BK_RAND_001676')><img src='/images/everest/promo/bottom/2008/120208_230x100_magnif_mind.jpg' height=100 width=230 alt="Magnificent Mind at Any Age (Unabridged) by Daniel G. Amen" border=0></a></a></td>
+			 		<td><img src="/clear.gif" width=19></td>
+			 		<td><a href=javascript:linkURL('/site/enSearch/searchResults.jsp','&N=0&Ntt=Nora+Roberts&Ntk=S_Author')><img src='/images/everest/promo/bottom/2008/120208_140x100_nora_roberts.jpg' height=100 width=140 alt="Nora Roberts Just Added" border=0></a></a></td>
+			 	</tr>
+			 </table>
+		</td></tr>
+	</table>
+						 </div>
+					</td>
+					<td id="right_margin"><!-- nothing to do here --></td>
+				</tr>
+				<tr>
+					<td colspan="4" id="bottomCurve"><img src="/images/everest/layout/bot_column_container_curve.gif"></td>
+				</tr>
+			</table>
+			<!-- Close Main Column Table -->
+			<script type="text/javascript">
+				pageLoad();
+				mainCall();
+			</script>
+		  	<!-- This code is for capturing browse information by the Loomia Site for the recommendation engine.-->
+<!-- *****************  Please do not remove this ************************  -->
+			    <!--script type="text/javascript" src="http://loomia.cachefly.net/js/clix.js"></script-->
+			    <script type="text/javascript" src="http://assets.loomia.com/js/include.js"></script>
+					<script type="text/javascript">
+					var L_VARS=new Object();
+					L_VARS.publisher_key=1552339600;
+					L_VARS.userid= 4557619;
+					loomia_clickstreamRecorder(L_VARS);
+					</script>
+			<!-- closing div from topNav (id=adblSite) -->
+</div>
+<!-- footer $Id: -->
+<div id="adblFooter">
+				<div style="width:100%"><strong>
+                Prices subject to Sales and VAT tax where applicable
+        </strong></div>
+	<div id="footerPriLinks">
+		<a class="footPriLink" id="ftrPriLink1" href="http://www.audible.com/helpcenter/">Customer Support</a>
+		<a class="footPriLink" id="ftrPriLink2" href="http://www.audible.com/adbl/store/sitemap.jsp?BV_UseBVCookie=Yes">Site Map</a>
+		<a class="footPriLink" id="ftrPriLink3" href="http://about.audible.com/press-releases/">Press Releases</a>
+		<a class="footPriLink" id="ftrPriLink4" href="http://www.audible.com/adbl/store/catalog.jsp?Type=entire&BV_UseBVCookie=Yes">A-Z Catalog</a>
+		<a class="footPriLink" id="ftrPriLink5" href="http://www.audible.com/adbl/site/softwareWizard/SWOption.jsp?BV_UseBVCookie=Yes">Software</a>
+		<a class="footPriLink" id="ftrPriLink6" href="http://kids.audible.com/adkd/store/welcome.jsp?source_code=AUDK4335WS112107&entryRedirect=/site/k/homepageGuest.jsp" target="_blank">AudibleKids</a>
+		<BR />
+		<a class="footPriLink" id="ftrPriLink1" href="http://about.audible.com/contact-us/">Contact Us</a>
+		<a class="footPriLink" id="ftrPriLink2" href="http://about.audible.com/">About Audible</a>
+		<a class="footPriLink" id="ftrPriLink3" href="http://www.audible.com/adbl/store/affiliatesNew/index.jsp?Type=AffiliatePage&BV_UseBVCookie=Yes">Affiliates</a>
+		<a class="footPriLink" id="ftrPriLink6" href="http://www.audible.com/adbl/site/CorporateProgram/bulkPurchase.jsp?Type=AudibleatWorkMainPageDeviceChoice&BV_UseBVCookie=Yes">Corporate Programs</a>
+	</div>
+	<div id="footerSecLinks">
+		<form name="country">
+		<table border="0" align="center">
+		<tr>
+		<td></td>
+		<td>
+		<select onChange="SelectCountry();" name="selcountry">
+		<option value='US'>Audible United States</option>
+		<option value='FR'>Audible France</option>
+		<option value='DE'>Audible Germany</option>
+		<option value='UK'>Audible UK</option>
+		</select>
+		</td>
+		</tr>
+		</table>
+		</form>
+		<a class="footSecLink" id="ftrSecLink4" href="http://www.audible.com/adbl/store/rssFeed.jsp?BV_UseBVCookie=Yes">RSS</a>
+		<a class="footSecLink" id="ftrSecLink5" href="http://www.audible.com/adbl/site/audibleSearch/podcasts.jsp?BV_UseBVCookie=Yes">Podcasting</a>
+		<a class="footSecLink" id="ftrSecLink7" href="http://www.audible.com/adbl/store/audibleAirPalm.jsp?BV_UseBVCookie=Yes">Wireless</a>
+	</div>
+	<div id="footerPartners" style="width:100%">
+		<span class="footPartner" id="ftrPartner1" >Recommendations powered by: <img src="/images/everest/site/recommendation/loomia_badge_small.gif" alt="loomia"></span>
+	</div>
+	<div id="footerCopyright" style="width:100%"> &#169; Copyright 1997 - 2008 Audible, Inc.
+		<a class="footSecLink" id="ftrCopyLink1" href="/adbl/faqs/terms.jsp?BV_UseBVCookie=Yes">Legal Notices</a>
+		<a class="footSecLink" id="ftrCopyLink2" href="/adbl/store/privacy.jsp?Type=policy&BV_UseBVCookie=Yes">Privacy Policy</a>
+	</div>
+</div>
+<script>
+//BAU-1647
+		function SelectCountry(){
+						if (document.country.selcountry.value == "US")
+			           {
+						document.country.action="http://www.audible.com/";
+						document.country.submit();
+					   }
+					   if (document.country.selcountry.value == "FR")
+			           {
+						document.country.action="http://www.audible.fr/";
+						document.country.submit();
+					   }
+					   if (document.country.selcountry.value == "DE")
+			           {
+						document.country.action="http://www.audible.de/";
+						document.country.submit();
+					   }
+					   if (document.country.selcountry.value == "UK")
+			           {
+						document.country.action="http://www.audible.co.uk";
+						document.country.submit();
+					   }
+				}
+		//BAU-1647
+</script>
+<!-- Java im-c03-00 -->
+<!-- SiteCatalyst code version: G.2.
+Copyright 1997 - 2003 Omniture, Inc. More info available at
+http://www.omniture.com --><script language="JavaScript"><!--
+/* You may give each page an identifying name, server, and channel on
+the next lines. */
+var s_pageName="/site/homepage/home.jsp"; 		/* Page Name */
+var s_server="" 				/* Server Name */
+var s_channel=""; 		/* Sub Category Name */
+var s_pageType="timeout.html" 			/* Error Page or Page Not Found */
+var s_prop1="ANONAUDW0378WS010202_Audible.com_Old Default Anon Source Code"; 			/* Action Code */
+var s_prop2=""; 			/* Category Name */
+var s_prop3="ALst";			/* Visitor Type - Anon, Regd, Cust, ALst, Comp */
+var s_prop4="";			/* Site Page - Type/Option Selected by Visitor */
+var s_prop5="/site/homepage/home.jsp|ANONAUDW0378WS010202_Audible.com_Old Default Anon ";               /* Action Code Pathing */
+/* E-commerce Variables */
+var s_campaign="ANONAUDW0378WS010202_Audible.com_Old Default Anon Source Code";		/* Action Code */
+var s_state="AZ";			/* State */
+var s_zip="85283";			/* Zip Code */
+var s_events="";			/* Current Visitor Event - Add, Remove, Purchase, etc. */
+var s_products="";			/* Current Product(s) processed by Visitor */
+var s_purchaseID="";		/* Order Number */
+var s_eVar1="ALst";                      /* Visitor Type - Regd, Cust, ALst, Comp */
+var s_eVar2="";                   /* Last Navigation Category */
+var s_eVar3="";			/* Search Term - keyword */
+var s_eVar4=""					/* Listen To Sample - Not Yet Coded */
+var s_eVar5="";			/* Site Page - Type/Option Selected by Visitor */
+/********* INSERT THE DOMAIN AND PATH TO YOUR CODE BELOW ************/
+/********** DO NOT ALTER ANYTHING ELSE BELOW THIS LINE! *************/
+var s_code=' '//--></script>
+<script language="JavaScript" src="/omnitureincludes/s_code.js"></script>
+<script language="JavaScript"><!--
+var s_wd=window,s_tm=new Date;if(s_code!=' '){s_code=s_dc(
+'audiblecom,audiblelistener');if(s_code)document.write(s_code)}else
+document.write('<im'+'g src="http://audiblecom.112.2O7.net/b/ss/'+'audiblecom,audiblelistener'+'/1/G.2--FB/s'+s_tm.getTime()+'?[AQB]'
++'&pageName='+escape(s_wd.s_pageName?s_wd.s_pageName:(s_wd.pageName?s_wd.pageName:''))
++'&server='+escape(s_wd.s_server?s_wd.s_server:(s_wd.server?s_wd.server:''))
++'&ch='+escape(s_wd.s_channel?s_wd.s_channel:(s_wd.channel?s_wd.channel:''))
++'&[AQE]" height="1" width="1" border="0" />')
+//--></script><script language="JavaScript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script><noscript><img
+src="http://audiblecom.112.2O7.net/b/ss/audiblecom,audiblelistener/1/G.2-XPd-S"
+height="1" width="1" border="0" /></noscript><!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: G.2. -->
+		</div>
+	</body>
+</html>

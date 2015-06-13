@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class name="com.oreilly.hh.data.Recording" table="recording">
+    <meta attribute="class-description">
+    	An audio entity, usually an audio book.
+    </meta>
+
+    <id name="id" type="int" column="id">
+      <meta attribute="scope-set">protected</meta>
+      <generator class="native"/>
+    </id>
+
+    <property name="title" type="string" not-null="true"/>
+
+    <property name="price" type="double" not-null="true"/>
+
+    <property name="rating" type="string" not-null="true"/>
+
+    <property name="narrator" type="string" not-null="true">
+      <meta attribute="field-description">The person that talks</meta>
+    </property>
+
+    <set name="authors" table="author">
+    	<key column="id"/>
+	<many-to-many class="com.oreilly.hh.data.Author" column="id"/>
+    </set>
+
+    <property name="released" type="date"/>
+
+  </class>
+</hibernate-mapping>
